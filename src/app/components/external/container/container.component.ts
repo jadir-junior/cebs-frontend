@@ -6,7 +6,12 @@ import { Component } from '@angular/core'
   styles: [
     `
       .container {
-        margin: 24px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
       }
     `,
   ],

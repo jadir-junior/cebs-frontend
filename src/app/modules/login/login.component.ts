@@ -12,11 +12,11 @@ import { Component } from '@angular/core'
       <cebs-title color="primary">Bem vinda(o)!</cebs-title>
       <div class="wrapper-text">
         <cebs-text>
-          Eu estou tão feliz e te ver. Você pode continuar fazendo login para gerenciar
+          Eu estou tão feliz em te ver. Você pode continuar fazendo login para gerenciar
           suas contabilidades
         </cebs-text>
       </div>
-      <form [formGroup]="form" (submit)="onSubmit(form)">
+      <form [formGroup]="form" (submit)="onSubmit(form)" style="width: 100%;">
         <div class="wrapper-input">
           <cebs-input
             type="email"
@@ -38,6 +38,9 @@ import { Component } from '@angular/core'
         </div>
         <cebs-button [block]="true" color="primary" type="submit"> Login </cebs-button>
       </form>
+      <div class="wrapper-dont-have-account">
+        <cebs-text>Vocẽ não tem uma conta? <cebs-link>Cadastre!</cebs-link></cebs-text>
+      </div>
     </cebs-container>
   `,
   styles: [
@@ -58,6 +61,11 @@ import { Component } from '@angular/core'
       .wrapper-link {
         text-align: right;
         margin-bottom: 32px;
+      }
+
+      .wrapper-dont-have-account {
+        text-align: center;
+        margin-top: 24px;
       }
     `,
   ],
