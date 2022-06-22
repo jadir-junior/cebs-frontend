@@ -1,5 +1,6 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
+import { AuthenticationService } from '../authentication.service'
 import { Component } from '@angular/core'
 import { ValidationService } from 'src/app/common/validation.service'
 
@@ -23,7 +24,11 @@ export class LoginComponent {
     ],
   })
 
-  constructor(private fb: FormBuilder, private validation: ValidationService) {}
+  constructor(
+    private fb: FormBuilder,
+    private validation: ValidationService,
+    private authenticationService: AuthenticationService
+  ) {}
 
   get email(): FormControl {
     return this.form.get('email') as FormControl
@@ -37,9 +42,14 @@ export class LoginComponent {
     this.showPassword = !this.showPassword
   }
 
-  onSubmit({ value }: FormGroup): void {
+  onSubmit({ value, valid }: FormGroup): void {
     this.submitted = true
     console.log('EMAIL: ', this.email)
     console.log('FORM VALUE: ', value)
+    if (valid) {
+      this.authenticationService.login(value.email, value.password).subscribe((user) => {
+        console.log(user)
+      })
+    }
   }
 }
