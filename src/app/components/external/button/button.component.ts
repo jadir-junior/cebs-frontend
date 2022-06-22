@@ -5,6 +5,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   template: `
     <button
       [type]="type"
+      [disabled]="disabled"
+      [attr.aria-disabled]="disabled"
       [ngClass]="{
         'default': color === 'default',
         'primary': color === 'primary',
@@ -32,6 +34,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
         background-color: var(--primary-color);
         color: white;
         box-shadow: 0px 10px 14px -6px var(--primary-color);
+
+        &:disabled {
+          background-color: rgba(var(--primary-color-rgb), 0.7);
+          box-shadow: none;
+        }
       }
 
       .block {
@@ -41,6 +48,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   ],
 })
 export class ButtonComponent {
+  @Input() disabled = false
   @Input() type: 'submit' | 'button' = 'button'
   @Input() color: 'primary' | 'default' = 'default'
   @Input() block = false
