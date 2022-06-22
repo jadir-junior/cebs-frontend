@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core'
 @Component({
   selector: 'cebs-link',
   template: `
-    <a href="" class="link">
+    <a class="link">
       <ng-content></ng-content>
     </a>
   `,
@@ -17,6 +17,4 @@ import { Component, Input } from '@angular/core'
     `,
   ],
 })
-export class LinkComponent {
-  @Input() href!: string
-}
+export class LinkComponent {}
