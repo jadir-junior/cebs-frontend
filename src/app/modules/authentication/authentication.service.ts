@@ -1,10 +1,15 @@
-import { BehaviorSubject, Observable, of, tap } from 'rxjs'
+import { BehaviorSubject, Observable, map, of, tap } from 'rxjs'
 
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
+import { environment } from 'src/environments/environment'
 
 interface IUser {
   id: string
   name: string
+  email: string
+  token: string
 }
 
 @Injectable({
@@ -14,7 +19,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<IUser | null>
   public currentUser: Observable<IUser | null>
 
-  constructor() {
+  constructor(private router: Router, private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<IUser | null>(
       JSON.parse(localStorage.getItem('currentUser')!)
     )
@@ -29,18 +34,26 @@ export class AuthenticationService {
     return null
   }
 
-  login(username: string, password: string) {
-    return of().pipe(
-      tap(() => {
-        const user: IUser = {
-          id: '1',
-          name: 'Mick',
-        }
+  login(email: string, password: string): Observable<IUser> {
+    const user: IUser = {
+      id: '1',
+      name: 'Mick',
+      email: email,
+      token: '1234asdfg',
+    }
+
+    return of(user).pipe(
+      tap((user) => {
         localStorage.setItem('currentUser', JSON.stringify(user))
         this.currentUserSubject.next(user)
+        this.router.navigate(['/home'])
         return user
       })
     )
+  }
+
+  getMe(): Observable<IUser> {
+    return this.http.get<IUser>(`${environment.API_URL}`)
   }
 
   logout(): void {

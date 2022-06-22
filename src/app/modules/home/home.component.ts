@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication/authentication.service'
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'app-home',
   template: `
-    <p>
-      home works!
-    </p>
+    <p>home works!</p>
+    <button (click)="getMe()">GET ME</button>
   `,
-  styles: [
-  ]
+  styles: [],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  constructor(private authenticationService: AuthenticationService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  getMe() {
+    this.authenticationService.getMe().subscribe(() => {
+      console.log('GET ME')
+    })
   }
-
 }
