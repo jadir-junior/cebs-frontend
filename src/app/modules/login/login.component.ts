@@ -14,6 +14,7 @@ import { Component } from '@angular/core'
           suas contabilidades
         </cebs-text>
       </div>
+      <cebs-button [block]="true" color="primary">Login</cebs-button>
     </cebs-container>
   `,
   styles: [
