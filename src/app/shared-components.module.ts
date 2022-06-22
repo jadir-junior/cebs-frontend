@@ -1,6 +1,7 @@
 import { ButtonModule } from './components/external/button/button.module'
 import { ContainerModule } from './components/external/container/container.module'
 import { ErrorModule } from './components/external/error/error.module'
+import { FormModule } from './components/external/form/form.module'
 import { InputModule } from './components/external/input/input.module'
 import { LinkModule } from './components/external/link/link.module'
 import { LogoModule } from './components/internal/logo/logo.module'
@@ -17,6 +18,7 @@ const modules = [
   InputModule,
   LinkModule,
   ErrorModule,
+  FormModule,
 ]
 
 @NgModule({

@@ -11,33 +11,38 @@
   </div>
   <form [formGroup]="form" (submit)="onSubmit(form)" style="width: 100%">
     <div class="wrapper-input">
-      <cebs-input type="email" placeholder="Email" formControlName="email"></cebs-input>
-      <cebs-error
-        *ngIf="((email.touched && email.dirty) || submitted) && email.errors?.['required']"
-      >
-        O Email é obrigatório
-      </cebs-error>
-      <cebs-error *ngIf="(email.touched || email.dirty) && email.errors?.['email']">
-        Informe um e-mail valido
-      </cebs-error>
+      <cebs-form>
+        <cebs-input type="email" placeholder="Email" formControlName="email"></cebs-input>
+        <cebs-error
+          *ngIf="((email.touched && email.dirty) || submitted) && email.errors?.['required']"
+        >
+          O Email é obrigatório
+        </cebs-error>
+        <cebs-error *ngIf="(email.touched || email.dirty) && email.errors?.['email']">
+          Informe um e-mail valido
+        </cebs-error>
+      </cebs-form>
     </div>
+
     <div class="wrapper-input">
-      <cebs-input
-        placeholder="Password"
-        formControlName="password"
-        [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
-        [type]="showPassword ? 'text' : 'password'"
-        (appendIconClickEvent)="toggleVisibility()"
-      ></cebs-input>
-      <cebs-error
-        *ngIf="(password.touched || submitted) && password.errors?.['required']"
-      >
-        A senha é obrigatória
-      </cebs-error>
-      <cebs-error *ngIf="password.touched && password.errors?.['invalidPassword']">
-        Password should have minimum 8 characters, at least 1 uppercase letter, 1
-        lowercase letter and 1 number
-      </cebs-error>
+      <cebs-form>
+        <cebs-input
+          placeholder="Password"
+          formControlName="password"
+          [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
+          [type]="showPassword ? 'text' : 'password'"
+          (appendIconClickEvent)="toggleVisibility()"
+        ></cebs-input>
+        <cebs-error
+          *ngIf="(password.touched || submitted) && password.errors?.['required']"
+        >
+          A senha é obrigatória
+        </cebs-error>
+        <cebs-error *ngIf="password.touched && password.errors?.['invalidPassword']">
+          Password should have minimum 8 characters, at least 1 uppercase letter, 1
+          lowercase letter and 1 number
+        </cebs-error>
+      </cebs-form>
     </div>
     <div class="wrapper-link">
       <cebs-link>Esqueceu sua senha?</cebs-link>

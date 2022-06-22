@@ -7,7 +7,7 @@ import { Component } from '@angular/core'
     `
       .error {
         color: var(--text-error);
-        margin-top: 8px;
+        margin-top: 4px;
       }
     `,
   ],
