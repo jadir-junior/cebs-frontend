@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `<div>App running</div>`,
 })
-export class AppComponent {
-  title = 'cebs-frontend';
-}
+export class AppComponent {}
