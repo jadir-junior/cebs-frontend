@@ -1,4 +1,11 @@
-import { Component, Input, Provider, forwardRef } from '@angular/core'
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  Provider,
+  forwardRef,
+} from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 const INPUT_VALUE_ACCESSOR: Provider = {
@@ -19,36 +26,27 @@ const INPUT_VALUE_ACCESSOR: Provider = {
         (keyup)="onInputChange($event)"
         (focus)="markAsTouched()"
       />
+      <button
+        *ngIf="appendIcon"
+        class="material-symbols-outlined append-icon"
+        type="button"
+        [disabled]="disabled"
+        (click)="onAppendIconClick()"
+      >
+        {{ appendIcon }}
+      </button>
     </div>
   `,
-  styles: [
-    `
-      .wrapper-input {
-        background-color: var(--background-input);
-        border: 1px solid var(--background-input);
-        padding: 14px 16px;
-        border-radius: 12px;
-
-        &:focus-within {
-          border: 1px solid var(--primary-color);
-        }
-
-        input {
-          width: 100%;
-          font-size: 16px;
-          background-color: transparent;
-          border: none;
-          outline: 0;
-        }
-      }
-    `,
-  ],
+  styleUrls: ['input.component.scss'],
   providers: [INPUT_VALUE_ACCESSOR],
 })
 export class InputComponent implements ControlValueAccessor {
+  @Input() appendIcon!: string
   @Input() type: 'text' | 'email' | 'password' | 'tel' = 'text'
   @Input() placeholder!: string
   @Input() error = false
+
+  @Output() appendIconClickEvent = new EventEmitter()
 
   disabled = false
   value: string | null = null
@@ -63,6 +61,10 @@ export class InputComponent implements ControlValueAccessor {
 
     this.value = e.target.value
     this.onChange(this.value)
+  }
+
+  onAppendIconClick(): void {
+    this.appendIconClickEvent.emit()
   }
 
   setDisabledState(isDisabled: boolean): void {

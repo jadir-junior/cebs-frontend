@@ -26,9 +26,11 @@ import { Component } from '@angular/core'
         </div>
         <div class="wrapper-input">
           <cebs-input
-            type="password"
             placeholder="Password"
             formControlName="password"
+            [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
+            [type]="showPassword ? 'text' : 'password'"
+            (appendIconClickEvent)="toggleVisibility()"
           ></cebs-input>
         </div>
         <cebs-button [block]="true" color="primary" type="submit"> Login </cebs-button>
@@ -43,7 +45,7 @@ import { Component } from '@angular/core'
       }
 
       .wrapper-text {
-        margin: 16px 0;
+        margin: 16px 0 32px 0;
       }
 
       .wrapper-input {
@@ -53,12 +55,18 @@ import { Component } from '@angular/core'
   ],
 })
 export class LoginComponent {
+  showPassword = false
+
   form: FormGroup = this.fb.group({
     email: [''],
     password: [''],
   })
 
   constructor(private fb: FormBuilder) {}
+
+  toggleVisibility(): void {
+    this.showPassword = !this.showPassword
+  }
 
   onSubmit({ value }: FormGroup): void {
     console.log(value)
