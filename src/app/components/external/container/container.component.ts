@@ -2,13 +2,11 @@ import { Component } from '@angular/core'
 
 @Component({
   selector: 'cebs-container',
-  template: ` <ng-content></ng-content> `,
+  template: ` <div class="container"><ng-content></ng-content></div> `,
   styles: [
     `
-      :host {
+      .container {
         margin: 24px;
-        width: 100%;
-        height: 100%;
       }
     `,
   ],

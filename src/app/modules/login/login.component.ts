@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'app-login',
-  template: ` <cebs-container></cebs-container> `,
-  styles: [],
+  template: `
+    <cebs-container>
+      <cebs-title color="primary">Welcome Back</cebs-title>
+    </cebs-container>
+  `,
 })
-export class LoginComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class LoginComponent {}

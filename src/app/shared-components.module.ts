@@ -1,7 +1,8 @@
 import { ContainerModule } from './components/external/container/container.module'
 import { NgModule } from '@angular/core'
+import { TitleModule } from './components/external/title/title.module'
 
-const modules = [ContainerModule]
+const modules = [ContainerModule, TitleModule]
 
 @NgModule({
   imports: modules,
