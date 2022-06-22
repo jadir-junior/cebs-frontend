@@ -1,6 +1,7 @@
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { Component } from '@angular/core'
+import { ValidationService } from 'src/app/common/validation.service'
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,14 @@ import { Component } from '@angular/core'
             placeholder="Email"
             formControlName="email"
           ></cebs-input>
+          <div
+            *ngIf="((email.touched && email.dirty) || submitted) && email.errors?.['required']"
+          >
+            O Email é obrigatório
+          </div>
+          <div *ngIf="(email.touched || email.dirty) && email.errors?.['email']">
+            Informe um e-mail valido
+          </div>
         </div>
         <div class="wrapper-input">
           <cebs-input
@@ -32,6 +41,13 @@ import { Component } from '@angular/core'
             [type]="showPassword ? 'text' : 'password'"
             (appendIconClickEvent)="toggleVisibility()"
           ></cebs-input>
+          <div *ngIf="(password.touched || submitted) && password.errors?.['required']">
+            A senha é obrigatória
+          </div>
+          <div *ngIf="password.touched && password.errors?.['invalidPassword']">
+            Password should have minimum 8 characters, at least 1 uppercase letter, 1
+            lowercase letter and 1 number
+          </div>
         </div>
         <div class="wrapper-link">
           <cebs-link>Esqueceu sua senha?</cebs-link>
@@ -43,48 +59,40 @@ import { Component } from '@angular/core'
       </div>
     </cebs-container>
   `,
-  styles: [
-    `
-      .wrapper-logo {
-        text-align: center;
-        margin-bottom: 24px;
-      }
-
-      .wrapper-text {
-        margin: 16px 0 32px 0;
-      }
-
-      .wrapper-input {
-        margin: 16px 0;
-      }
-
-      .wrapper-link {
-        text-align: right;
-        margin-bottom: 32px;
-      }
-
-      .wrapper-dont-have-account {
-        text-align: center;
-        margin-top: 24px;
-      }
-    `,
-  ],
+  styleUrls: ['login.component.scss'],
 })
 export class LoginComponent {
   showPassword = false
+  submitted = false
 
   form: FormGroup = this.fb.group({
-    email: [''],
-    password: [''],
+    email: ['', [Validators.required, Validators.email]],
+    password: [
+      '',
+      Validators.compose([
+        Validators.required,
+        this.validation.passwordPatternValidator(),
+      ]),
+    ],
   })
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private validation: ValidationService) {}
+
+  get email(): FormControl {
+    return this.form.get('email') as FormControl
+  }
+
+  get password(): FormControl {
+    return this.form.get('password') as FormControl
+  }
 
   toggleVisibility(): void {
     this.showPassword = !this.showPassword
   }
 
   onSubmit({ value }: FormGroup): void {
-    console.log(value)
+    this.submitted = true
+    console.log('EMAIL: ', this.email)
+    console.log('FORM VALUE: ', value)
   }
 }
