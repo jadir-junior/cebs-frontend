@@ -5,14 +5,14 @@ import { Component } from '@angular/core'
   template: `
     <div class="four-zero-four">
       <span>4</span>
-      <cebs-mascot [width]="120" [height]="120"></cebs-mascot>
+      <cebs-mascot [width]="130" [height]="130"></cebs-mascot>
       <span>4</span>
     </div>
   `,
   styles: [
     `
       .four-zero-four {
-        font-size: 140px;
+        font-size: 130px;
         font-weight: bold;
         color: var(--primary-color);
 
