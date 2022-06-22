@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   selector: 'cebs-button',
   template: `
     <button
+      [type]="type"
       [ngClass]="{
         'default': color === 'default',
         'primary': color === 'primary',
@@ -40,6 +41,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   ],
 })
 export class ButtonComponent {
+  @Input() type: 'submit' | 'button' = 'button'
   @Input() color: 'primary' | 'default' = 'default'
   @Input() block = false
   @Output() clickEvent = new EventEmitter()

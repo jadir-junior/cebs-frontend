@@ -1,3 +1,5 @@
+import { FormBuilder, FormGroup } from '@angular/forms'
+
 import { Component } from '@angular/core'
 
 @Component({
@@ -14,7 +16,23 @@ import { Component } from '@angular/core'
           suas contabilidades
         </cebs-text>
       </div>
-      <cebs-button [block]="true" color="primary">Login</cebs-button>
+      <form [formGroup]="form" (submit)="onSubmit(form)">
+        <div class="wrapper-input">
+          <cebs-input
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+          ></cebs-input>
+        </div>
+        <div class="wrapper-input">
+          <cebs-input
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+          ></cebs-input>
+        </div>
+        <cebs-button [block]="true" color="primary" type="submit"> Login </cebs-button>
+      </form>
     </cebs-container>
   `,
   styles: [
@@ -27,7 +45,22 @@ import { Component } from '@angular/core'
       .wrapper-text {
         margin: 16px 0;
       }
+
+      .wrapper-input {
+        margin: 16px 0;
+      }
     `,
   ],
 })
-export class LoginComponent {}
+export class LoginComponent {
+  form: FormGroup = this.fb.group({
+    email: [''],
+    password: [''],
+  })
+
+  constructor(private fb: FormBuilder) {}
+
+  onSubmit({ value }: FormGroup): void {
+    console.log(value)
+  }
+}

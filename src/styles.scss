@@ -4,6 +4,12 @@
   --primary-color: #9a178f;
 
   --text-dark-gray: #848a8d;
+
+  --background-input: #f5f6f8;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html,
@@ -11,7 +17,6 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
-  box-sizing: border-box;
 }
 
 h1,
