@@ -7,6 +7,13 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./modules/login/login.module').then((m) => m.LoginModule),
   },
+  {
+    path: '**',
+    loadChildren: () =>
+      import('./modules/page-not-found/page-not-found.module').then(
+        (m) => m.PageNotFoundModule
+      ),
+  },
 ]
 
 @NgModule({
