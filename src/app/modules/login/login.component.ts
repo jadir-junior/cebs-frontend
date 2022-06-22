@@ -33,6 +33,9 @@ import { Component } from '@angular/core'
             (appendIconClickEvent)="toggleVisibility()"
           ></cebs-input>
         </div>
+        <div class="wrapper-link">
+          <cebs-link>Esqueceu sua senha?</cebs-link>
+        </div>
         <cebs-button [block]="true" color="primary" type="submit"> Login </cebs-button>
       </form>
     </cebs-container>
@@ -50,6 +53,11 @@ import { Component } from '@angular/core'
 
       .wrapper-input {
         margin: 16px 0;
+      }
+
+      .wrapper-link {
+        text-align: right;
+        margin-bottom: 32px;
       }
     `,
   ],
