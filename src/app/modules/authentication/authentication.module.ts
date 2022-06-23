@@ -4,10 +4,11 @@ import { LoginComponent } from './login/login.component'
 import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 import { SharedComponentsModule } from 'src/app/shared-components.module';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { CheckYourEmailComponent } from './check-your-email/check-your-email.component'
 
 @NgModule({
-  declarations: [LoginComponent, ForgotPasswordComponent],
+  declarations: [LoginComponent, ForgotPasswordComponent, CheckYourEmailComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
