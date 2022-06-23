@@ -43,11 +43,20 @@ export class AuthenticationService {
     }
 
     return of(user).pipe(
-      tap((user) => {
-        localStorage.setItem('currentUser', JSON.stringify(user))
-        this.currentUserSubject.next(user)
+      tap((response: IUser) => {
+        localStorage.setItem('currentUser', JSON.stringify(response))
+        this.currentUserSubject.next(response)
         this.router.navigate(['/home'])
-        return user
+        return response
+      })
+    )
+  }
+
+  forgotPassword(email: string): Observable<unknown> {
+    console.log('EMAIL: ', email)
+    return of({}).pipe(
+      tap(() => {
+        this.router.navigate(['/check-your-email'])
       })
     )
   }
