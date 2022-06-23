@@ -1,0 +1,34 @@
+<cebs-container>
+  <div class="wrapper-text">
+    <cebs-title color="primary">Crie uma Nova Conta</cebs-title>
+  </div>
+  <div class="wrapper-text">
+    <cebs-text> Crie uma nova conta para poder gerenciar suas contabilidades </cebs-text>
+  </div>
+  <div class="wrapper-form">
+    <form [formGroup]="form" (submit)="onSubmit(form)">
+      <cebs-form>
+        <cebs-input type="text" formControlName="name" placeholder="Nome"></cebs-input>
+      </cebs-form>
+      <cebs-form>
+        <cebs-input type="email" formControlName="email" placeholder="Email"></cebs-input>
+        <cebs-error-validation-email
+          [email]="email"
+          [submitted]="submitted"
+        ></cebs-error-validation-email>
+      </cebs-form>
+      <cebs-form>
+        <cebs-input
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="Senha"
+          [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
+          (appendIconClickEvent)="toggleVisibility()"
+        ></cebs-input>
+      </cebs-form>
+      <cebs-button type="submit" color="primary" [block]="true"
+        >Criar uma Conta</cebs-button
+      >
+    </form>
+  </div>
+</cebs-container>
