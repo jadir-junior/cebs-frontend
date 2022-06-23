@@ -50,7 +50,7 @@ export class RegisterComponent {
   onSubmit({ value, valid }: FormGroup): void {
     this.submitted = true
     console.log('FORM VALUE', value)
-    console.log('TERMS: ', this.terms)
+    console.log('NAME: ', this.name)
     if (valid) {
       const { name, email, password } = value
     }

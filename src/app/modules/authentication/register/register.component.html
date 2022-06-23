@@ -1,4 +1,7 @@
-<cebs-container>
+<cebs-container justify="start">
+  <div class="wrapper-header">
+    <cebs-header-back-button></cebs-header-back-button>
+  </div>
   <div class="wrapper-text">
     <cebs-title color="primary">Crie uma Nova Conta</cebs-title>
   </div>
@@ -9,6 +12,14 @@
     <form [formGroup]="form" (submit)="onSubmit(form)">
       <cebs-form>
         <cebs-input type="text" formControlName="name" placeholder="Nome"></cebs-input>
+        <cebs-error
+          *ngIf="((name.touched && name.dirty) || submitted) && name.errors?.['required']"
+        >
+          O nome é obrigatório
+        </cebs-error>
+        <cebs-error *ngIf="name.touched && name.errors?.['minlength']">
+          O nome deve conter no mínimo 3 letras
+        </cebs-error>
       </cebs-form>
       <cebs-form>
         <cebs-input type="email" formControlName="email" placeholder="Email"></cebs-input>

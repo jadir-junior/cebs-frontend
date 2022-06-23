@@ -5,7 +5,9 @@ import { FormControl } from '@angular/forms'
 @Component({
   selector: 'cebs-error-validation-password',
   template: `
-    <cebs-error *ngIf="(password.touched || submitted) && password.errors?.['required']">
+    <cebs-error
+      *ngIf="((password.touched && password.dirty) || submitted) && password.errors?.['required']"
+    >
       A senha é obrigatória
     </cebs-error>
     <cebs-error *ngIf="password.touched && password.errors?.['invalidPassword']">
