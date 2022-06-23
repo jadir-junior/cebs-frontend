@@ -12,6 +12,13 @@ interface IUser {
   token: string
 }
 
+const response: IUser = {
+  id: '1',
+  name: 'Mick',
+  email: 'mickjjunior@gmail.com',
+  token: '1234asdfg',
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -34,20 +41,18 @@ export class AuthenticationService {
     return null
   }
 
-  login(email: string, password: string): Observable<IUser> {
-    const user: IUser = {
-      id: '1',
-      name: 'Mick',
-      email: email,
-      token: '1234asdfg',
-    }
+  login(email: string, password: string): Observable<unknown> {
+    return of({}).pipe(
+      tap(() => {
+        this.authenticatedUser()
+      })
+    )
+  }
 
-    return of(user).pipe(
-      tap((response: IUser) => {
-        localStorage.setItem('currentUser', JSON.stringify(response))
-        this.currentUserSubject.next(response)
-        this.router.navigate(['/home'])
-        return response
+  register(name: string, email: string, password: string): Observable<unknown> {
+    return of({}).pipe(
+      tap(() => {
+        this.authenticatedUser()
       })
     )
   }
@@ -68,5 +73,13 @@ export class AuthenticationService {
   logout(): void {
     localStorage.removeItem('currentUser')
     this.currentUserSubject.next(null)
+    this.router.navigate(['/auth/login'])
+  }
+
+  private authenticatedUser(): IUser {
+    localStorage.setItem('currentUser', JSON.stringify(response))
+    this.currentUserSubject.next(response)
+    this.router.navigate(['/home'])
+    return response
   }
 }

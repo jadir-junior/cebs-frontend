@@ -47,9 +47,7 @@ export class LoginComponent {
     console.log('EMAIL: ', this.email)
     console.log('FORM VALUE: ', value)
     if (valid) {
-      this.authenticationService.login(value.email, value.password).subscribe((user) => {
-        console.log(user)
-      })
+      this.authenticationService.login(value.email, value.password).subscribe(() => {})
     }
   }
 }

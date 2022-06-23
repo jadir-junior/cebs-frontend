@@ -1,5 +1,6 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
+import { AuthenticationService } from '../authentication.service'
 import { Component } from '@angular/core'
 import { ValidationService } from 'src/app/common/validation.service'
 
@@ -25,7 +26,11 @@ export class RegisterComponent {
     terms: [false, [Validators.requiredTrue]],
   })
 
-  constructor(private fb: FormBuilder, private validation: ValidationService) {}
+  constructor(
+    private fb: FormBuilder,
+    private validation: ValidationService,
+    private authenticationService: AuthenticationService
+  ) {}
 
   get name(): FormControl {
     return this.form.get('name') as FormControl
@@ -53,6 +58,7 @@ export class RegisterComponent {
     console.log('NAME: ', this.name)
     if (valid) {
       const { name, email, password } = value
+      this.authenticationService.register(name, email, password).subscribe(() => {})
     }
   }
 }
