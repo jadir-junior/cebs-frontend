@@ -2,17 +2,23 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { AuthenticationService } from '../authentication.service'
 import { Component } from '@angular/core'
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-forgot-password',
   template: `
     <cebs-container>
-      <header></header>
+      <header>
+        <cebs-icon-button
+          icon="arrow_back_ios"
+          (clickEvent)="goBack()"
+        ></cebs-icon-button>
+      </header>
       <div class="wrapper-mascot">
         <cebs-mascot-suspect [width]="130" [height]="161"></cebs-mascot-suspect>
       </div>
       <div class="wrapper-text">
-        <cebs-title>Esqueceu sua senha?</cebs-title>
+        <cebs-title color="primary">Esqueceu sua senha?</cebs-title>
       </div>
       <div class="wrapper-text">
         <cebs-text>
@@ -42,6 +48,7 @@ import { Component } from '@angular/core'
     `
       header {
         height: 60px;
+        width: 100%;
       }
 
       .wrapper-mascot {
@@ -71,11 +78,16 @@ export class ForgotPasswordComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private location: Location
   ) {}
 
   get email(): FormControl {
     return this.form.get('email') as FormControl
+  }
+
+  goBack(): void {
+    this.location.back()
   }
 
   onSubmit({ value, valid }: FormGroup): void {
