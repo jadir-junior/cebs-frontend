@@ -21,8 +21,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
       }
 
       .icon {
-        font-size: 18px;
-        margin-left: 8px;
         color: white;
       }
     `,

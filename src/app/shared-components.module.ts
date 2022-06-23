@@ -4,6 +4,7 @@ import { ErrorModule } from './components/external/error/error.module'
 import { ErrorValidationEmailModule } from './components/internal/error-validation-email/error-validation-email.module'
 import { FormModule } from './components/external/form/form.module'
 import { FourZeroFourModule } from './components/internal/four-zero-four/four-zero-four.module'
+import { HeaderBackButtonModule } from './components/internal/header-back-button/header-back-button.module'
 import { IconButtonModule } from './components/external/icon-button/icon-button.module'
 import { InputModule } from './components/external/input/input.module'
 import { LinkModule } from './components/external/link/link.module'
@@ -31,6 +32,7 @@ const modules = [
   ErrorValidationEmailModule,
   IconButtonModule,
   MascotSharedModule,
+  HeaderBackButtonModule,
 ]
 
 @NgModule({
