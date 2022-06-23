@@ -2,53 +2,50 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { AuthenticationService } from '../authentication.service'
 import { Component } from '@angular/core'
-import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-forgot-password',
   template: `
-    <cebs-container>
-      <header>
-        <cebs-icon-button
-          icon="arrow_back_ios"
-          (clickEvent)="goBack()"
-        ></cebs-icon-button>
-      </header>
-      <div class="wrapper-mascot">
-        <cebs-mascot-suspect [width]="130" [height]="161"></cebs-mascot-suspect>
+    <cebs-container justify="space-between">
+      <cebs-header-back-button></cebs-header-back-button>
+      <div class="wrapper-content-center">
+        <div class="wrapper-mascot">
+          <cebs-mascot-suspect [width]="130" [height]="161"></cebs-mascot-suspect>
+        </div>
+        <div class="wrapper-text">
+          <cebs-title color="primary">Esqueceu sua senha?</cebs-title>
+        </div>
+        <div class="wrapper-text">
+          <cebs-text>
+            Preencha seu e-amil abaixo e receba as instruções de resete de senha
+          </cebs-text>
+        </div>
+        <form class="wrapper-form" [formGroup]="form" (submit)="onSubmit(form)">
+          <cebs-form>
+            <cebs-input
+              type="email"
+              placeholder="Email"
+              formControlName="email"
+            ></cebs-input>
+            <cebs-error-validation-email
+              [email]="email"
+              [submitted]="submitted"
+            ></cebs-error-validation-email>
+          </cebs-form>
+          <cebs-button type="submit" [block]="true" color="primary">Enviar</cebs-button>
+        </form>
       </div>
-      <div class="wrapper-text">
-        <cebs-title color="primary">Esqueceu sua senha?</cebs-title>
-      </div>
-      <div class="wrapper-text">
-        <cebs-text>
-          Preencha seu e-amil abaixo e receba as instruções de resete de senha
-        </cebs-text>
-      </div>
-      <form class="wrapper-form" [formGroup]="form" (submit)="onSubmit(form)">
-        <cebs-form>
-          <cebs-input
-            type="email"
-            placeholder="Email"
-            formControlName="email"
-          ></cebs-input>
-          <cebs-error-validation-email
-            [email]="email"
-            [submitted]="submitted"
-          ></cebs-error-validation-email>
-        </cebs-form>
-        <cebs-button type="submit" [block]="true" color="primary">Enviar</cebs-button>
-      </form>
-      <div class="wrapper-link">
+      <div>
         <cebs-link routerLink="/auth/login">Volte para o login</cebs-link>
       </div>
     </cebs-container>
   `,
   styles: [
     `
-      header {
-        height: 60px;
-        width: 100%;
+      .wrapper-content-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .wrapper-mascot {
@@ -62,10 +59,6 @@ import { Location } from '@angular/common'
       .wrapper-form {
         width: 100%;
       }
-
-      .wrapper-link {
-        margin-top: auto;
-      }
     `,
   ],
 })
@@ -78,16 +71,11 @@ export class ForgotPasswordComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authenticationService: AuthenticationService,
-    private location: Location
+    private authenticationService: AuthenticationService
   ) {}
 
   get email(): FormControl {
     return this.form.get('email') as FormControl
-  }
-
-  goBack(): void {
-    this.location.back()
   }
 
   onSubmit({ value, valid }: FormGroup): void {
