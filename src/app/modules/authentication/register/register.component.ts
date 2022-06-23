@@ -5,15 +5,16 @@ import { Component } from '@angular/core'
 import { ValidationService } from 'src/app/common/validation.service'
 
 @Component({
-  selector: 'app-login',
-  templateUrl: 'login.component.html',
-  styleUrls: ['login.component.scss'],
+  selector: 'app-register',
+  templateUrl: 'register.component.html',
+  styleUrls: ['register.component.scss'],
 })
-export class LoginComponent {
+export class RegisterComponent {
   showPassword = false
   submitted = false
 
   form: FormGroup = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
     password: [
       '',
@@ -22,6 +23,7 @@ export class LoginComponent {
         this.validation.passwordPatternValidator(),
       ]),
     ],
+    terms: [false, [Validators.requiredTrue]],
   })
 
   constructor(
@@ -29,6 +31,10 @@ export class LoginComponent {
     private validation: ValidationService,
     private authenticationService: AuthenticationService
   ) {}
+
+  get name(): FormControl {
+    return this.form.get('name') as FormControl
+  }
 
   get email(): FormControl {
     return this.form.get('email') as FormControl
@@ -38,16 +44,21 @@ export class LoginComponent {
     return this.form.get('password') as FormControl
   }
 
+  get terms(): FormControl {
+    return this.form.get('terms') as FormControl
+  }
+
   toggleVisibility(): void {
     this.showPassword = !this.showPassword
   }
 
   onSubmit({ value, valid }: FormGroup): void {
     this.submitted = true
-    console.log('EMAIL: ', this.email)
-    console.log('FORM VALUE: ', value)
+    console.log('FORM VALUE', value)
+    console.log('NAME: ', this.name)
     if (valid) {
-      this.authenticationService.login(value.email, value.password).subscribe(() => {})
+      const { name, email, password } = value
+      this.authenticationService.register(name, email, password).subscribe(() => {})
     }
   }
 }

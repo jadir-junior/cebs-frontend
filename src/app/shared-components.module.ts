@@ -1,7 +1,9 @@
 import { ButtonModule } from './components/external/button/button.module'
+import { CheckboxModule } from './components/external/checkbox/checkbox.module'
 import { ContainerModule } from './components/external/container/container.module'
 import { ErrorModule } from './components/external/error/error.module'
 import { ErrorValidationEmailModule } from './components/internal/error-validation-email/error-validation-email.module'
+import { ErrorValidationPasswordModule } from './components/internal/error-validation-password/error-validation-password.module'
 import { FormModule } from './components/external/form/form.module'
 import { FourZeroFourModule } from './components/internal/four-zero-four/four-zero-four.module'
 import { HeaderBackButtonModule } from './components/internal/header-back-button/header-back-button.module'
@@ -33,6 +35,8 @@ const modules = [
   IconButtonModule,
   MascotSharedModule,
   HeaderBackButtonModule,
+  ErrorValidationPasswordModule,
+  CheckboxModule,
 ]
 
 @NgModule({

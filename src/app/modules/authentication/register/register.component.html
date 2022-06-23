@@ -1,0 +1,62 @@
+<cebs-container justify="start">
+  <div class="wrapper-header">
+    <cebs-header-back-button></cebs-header-back-button>
+  </div>
+  <div class="wrapper-text">
+    <cebs-title color="primary">Crie uma Nova Conta</cebs-title>
+  </div>
+  <div class="wrapper-text">
+    <cebs-text> Crie uma nova conta para poder gerenciar suas contabilidades </cebs-text>
+  </div>
+  <div class="wrapper-form">
+    <form [formGroup]="form" (submit)="onSubmit(form)">
+      <cebs-form>
+        <cebs-input type="text" formControlName="name" placeholder="Nome"></cebs-input>
+        <cebs-error
+          *ngIf="((name.touched && name.dirty) || submitted) && name.errors?.['required']"
+        >
+          O nome é obrigatório
+        </cebs-error>
+        <cebs-error *ngIf="name.touched && name.errors?.['minlength']">
+          O nome deve conter no mínimo 3 letras
+        </cebs-error>
+      </cebs-form>
+      <cebs-form>
+        <cebs-input type="email" formControlName="email" placeholder="Email"></cebs-input>
+        <cebs-error-validation-email
+          [email]="email"
+          [submitted]="submitted"
+        ></cebs-error-validation-email>
+      </cebs-form>
+      <cebs-form>
+        <cebs-input
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="Senha"
+          [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
+          (appendIconClickEvent)="toggleVisibility()"
+        ></cebs-input>
+        <cebs-error-validation-password
+          [password]="password"
+          [submitted]="submitted"
+        ></cebs-error-validation-password>
+      </cebs-form>
+      <div class="wrapper-checkbox">
+        <div class="wrapper-checkbox-label">
+          <cebs-checkbox formControlName="terms"></cebs-checkbox>
+          <cebs-text>
+            Eu aceito os <cebs-link>Termos de Serviço</cebs-link> e a
+            <cebs-link>Politica de Privacidade</cebs-link>
+          </cebs-text>
+        </div>
+        <cebs-error *ngIf="submitted && terms.errors?.['required']">
+          É obrigatório concordar com os termos
+        </cebs-error>
+      </div>
+
+      <cebs-button type="submit" color="primary" [block]="true">
+        Criar uma Conta
+      </cebs-button>
+    </form>
+  </div>
+</cebs-container>

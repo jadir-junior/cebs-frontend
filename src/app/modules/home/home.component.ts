@@ -6,6 +6,7 @@ import { Component } from '@angular/core'
   template: `
     <p>home works!</p>
     <button (click)="getMe()">GET ME</button>
+    <button (click)="logout()">Logout</button>
   `,
   styles: [],
 })
@@ -16,5 +17,9 @@ export class HomeComponent {
     this.authenticationService.getMe().subscribe(() => {
       console.log('GET ME')
     })
+  }
+
+  logout() {
+    this.authenticationService.logout()
   }
 }

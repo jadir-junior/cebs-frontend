@@ -1,0 +1,27 @@
+.wrapper-header {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.wrapper-form {
+  margin-top: 32px;
+  width: 100%;
+}
+
+.wrapper-text {
+  margin-bottom: 16px;
+}
+
+.wrapper-checkbox {
+  margin-bottom: 32px;
+  height: 67px;
+}
+
+.wrapper-checkbox-label {
+  display: flex;
+  align-items: center;
+
+  cebs-checkbox {
+    margin-right: 16px;
+  }
+}
