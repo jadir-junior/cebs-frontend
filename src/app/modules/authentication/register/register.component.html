@@ -30,9 +30,22 @@
           [submitted]="submitted"
         ></cebs-error-validation-password>
       </cebs-form>
-      <cebs-button type="submit" color="primary" [block]="true"
-        >Criar uma Conta</cebs-button
-      >
+      <div class="wrapper-checkbox">
+        <div class="wrapper-checkbox-label">
+          <cebs-checkbox formControlName="terms"></cebs-checkbox>
+          <cebs-text>
+            Eu aceito os <cebs-link>Termos de Serviço</cebs-link> e a
+            <cebs-link>Politica de Privacidade</cebs-link>
+          </cebs-text>
+        </div>
+        <cebs-error *ngIf="submitted && terms.errors?.['required']">
+          É obrigatório concordar com os termos
+        </cebs-error>
+      </div>
+
+      <cebs-button type="submit" color="primary" [block]="true">
+        Criar uma Conta
+      </cebs-button>
     </form>
   </div>
 </cebs-container>

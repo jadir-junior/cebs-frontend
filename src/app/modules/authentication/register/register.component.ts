@@ -22,6 +22,7 @@ export class RegisterComponent {
         this.validation.passwordPatternValidator(),
       ]),
     ],
+    terms: [false, [Validators.requiredTrue]],
   })
 
   constructor(private fb: FormBuilder, private validation: ValidationService) {}
@@ -38,6 +39,10 @@ export class RegisterComponent {
     return this.form.get('password') as FormControl
   }
 
+  get terms(): FormControl {
+    return this.form.get('terms') as FormControl
+  }
+
   toggleVisibility(): void {
     this.showPassword = !this.showPassword
   }
@@ -45,6 +50,7 @@ export class RegisterComponent {
   onSubmit({ value, valid }: FormGroup): void {
     this.submitted = true
     console.log('FORM VALUE', value)
+    console.log('TERMS: ', this.terms)
     if (valid) {
       const { name, email, password } = value
     }

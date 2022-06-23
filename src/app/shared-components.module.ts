@@ -1,4 +1,5 @@
 import { ButtonModule } from './components/external/button/button.module'
+import { CheckboxModule } from './components/external/checkbox/checkbox.module'
 import { ContainerModule } from './components/external/container/container.module'
 import { ErrorModule } from './components/external/error/error.module'
 import { ErrorValidationEmailModule } from './components/internal/error-validation-email/error-validation-email.module'
@@ -35,6 +36,7 @@ const modules = [
   MascotSharedModule,
   HeaderBackButtonModule,
   ErrorValidationPasswordModule,
+  CheckboxModule,
 ]
 
 @NgModule({

@@ -6,3 +6,17 @@
 .wrapper-text {
   margin-bottom: 16px;
 }
+
+.wrapper-checkbox {
+  margin-bottom: 32px;
+  height: 67px;
+}
+
+.wrapper-checkbox-label {
+  display: flex;
+  align-items: center;
+
+  cebs-checkbox {
+    margin-right: 16px;
+  }
+}
