@@ -9,6 +9,7 @@ import { InputModule } from './components/external/input/input.module'
 import { LinkModule } from './components/external/link/link.module'
 import { LogoModule } from './components/internal/logo/logo.module'
 import { MascotModule } from './components/internal/mascot/mascot.module'
+import { MascotSharedModule } from './components/internal/mascot-shared/mascot-shared.module'
 import { MascotSuspectModule } from './components/internal/mascot-suspect/mascot-suspect.module'
 import { NgModule } from '@angular/core'
 import { TextModule } from './components/external/text/text.module'
@@ -29,6 +30,7 @@ const modules = [
   MascotSuspectModule,
   ErrorValidationEmailModule,
   IconButtonModule,
+  MascotSharedModule,
 ]
 
 @NgModule({
