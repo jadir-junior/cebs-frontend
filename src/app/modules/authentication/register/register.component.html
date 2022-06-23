@@ -25,6 +25,10 @@
           [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
           (appendIconClickEvent)="toggleVisibility()"
         ></cebs-input>
+        <cebs-error-validation-password
+          [password]="password"
+          [submitted]="submitted"
+        ></cebs-error-validation-password>
       </cebs-form>
       <cebs-button type="submit" color="primary" [block]="true"
         >Criar uma Conta</cebs-button
