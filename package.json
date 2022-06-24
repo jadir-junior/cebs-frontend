@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "style": "prettier --check '**/src/**/*.{scss,ts}'",
     "style:fix": "prettier --write '**/src/**/*.{scss,ts}'"
   },
