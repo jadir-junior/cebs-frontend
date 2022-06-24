@@ -28,6 +28,7 @@
           [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
           [type]="showPassword ? 'text' : 'password'"
           (appendIconClickEvent)="toggleVisibility()"
+          data-testid="password"
         ></cebs-input>
         <cebs-error-validation-password
           [password]="password"
@@ -38,7 +39,9 @@
     <div class="wrapper-link">
       <cebs-link routerLink="/auth/forgot-password">Esqueceu sua senha?</cebs-link>
     </div>
-    <cebs-button [block]="true" color="primary" type="submit"> Login </cebs-button>
+    <cebs-button [block]="true" color="primary" type="submit" data-testid="button-login">
+      Login
+    </cebs-button>
   </form>
   <div class="wrapper-dont-have-account">
     <cebs-text>
