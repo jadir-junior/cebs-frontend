@@ -6,7 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { LoginComponent } from './login.component'
 import { NO_ERRORS_SCHEMA } from '@angular/core'
 import { RouterTestingModule } from '@angular/router/testing'
-import { SharedComponentsModule } from 'src/app/shared-components.module'
+import { SharedComponentsModule } from '../../../shared-components.module'
 
 describe('LoginComponent', () => {
   let component: LoginComponent

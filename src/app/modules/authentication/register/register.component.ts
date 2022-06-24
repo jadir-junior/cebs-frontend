@@ -2,7 +2,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { AuthenticationService } from '../authentication.service'
 import { Component } from '@angular/core'
-import { ValidationService } from 'src/app/common/validation.service'
+import { ValidationService } from '../../../common/validation.service'
 
 @Component({
   selector: 'app-register',
