@@ -1,37 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { Spectator, createComponentFactory } from '@ngneat/spectator'
 
-import { CommonModule } from '@angular/common'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { LoginComponent } from './login.component'
-import { NO_ERRORS_SCHEMA } from '@angular/core'
+import { MockModule } from 'ng-mocks'
+import { ReactiveFormsModule } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
-import { SharedComponentsModule } from 'src/app/shared-components.module'
+import { SharedComponentsModule } from '../../../shared-components.module'
 
 describe('LoginComponent', () => {
-  let component: LoginComponent
-  let fixture: ComponentFixture<LoginComponent>
+  let spectator: Spectator<LoginComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [LoginComponent],
-      imports: [
-        ReactiveFormsModule,
-        RouterTestingModule,
-        HttpClientTestingModule,
-        SharedComponentsModule,
-      ],
-      schemas: [NO_ERRORS_SCHEMA],
-    }).compileComponents()
+  const createComponent = createComponentFactory({
+    component: LoginComponent,
+    imports: [
+      ReactiveFormsModule,
+      RouterTestingModule,
+      HttpClientTestingModule,
+      MockModule(SharedComponentsModule),
+    ],
   })
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+  beforeEach(async () => {
+    spectator = createComponent()
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(spectator).toBeTruthy()
   })
 })

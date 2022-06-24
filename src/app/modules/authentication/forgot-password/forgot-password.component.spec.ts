@@ -5,7 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { NO_ERRORS_SCHEMA } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
-import { SharedComponentsModule } from 'src/app/shared-components.module'
+import { SharedComponentsModule } from '../../../shared-components.module'
 
 describe('ForgotPasswordComponent', () => {
   let component: ForgotPasswordComponent
