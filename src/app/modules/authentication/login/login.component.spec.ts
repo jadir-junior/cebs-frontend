@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
+import { CommonModule } from '@angular/common'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { LoginComponent } from './login.component'
+import { NO_ERRORS_SCHEMA } from '@angular/core'
+import { RouterTestingModule } from '@angular/router/testing'
+import { SharedComponentsModule } from 'src/app/shared-components.module'
 
 describe('LoginComponent', () => {
   let component: LoginComponent
@@ -9,6 +15,13 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
+      imports: [
+        ReactiveFormsModule,
+        RouterTestingModule,
+        HttpClientTestingModule,
+        SharedComponentsModule,
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents()
   })
 

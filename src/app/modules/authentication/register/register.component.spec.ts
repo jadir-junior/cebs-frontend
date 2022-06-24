@@ -1,25 +1,36 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { RegisterComponent } from './register.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { NO_ERRORS_SCHEMA } from '@angular/core'
+import { ReactiveFormsModule } from '@angular/forms'
+import { RegisterComponent } from './register.component'
+import { RouterTestingModule } from '@angular/router/testing'
+import { SharedComponentsModule } from 'src/app/shared-components.module'
 
 describe('RegisterComponent', () => {
-  let component: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+  let component: RegisterComponent
+  let fixture: ComponentFixture<RegisterComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
-    })
-    .compileComponents();
-  });
+      declarations: [RegisterComponent],
+      imports: [
+        ReactiveFormsModule,
+        RouterTestingModule,
+        HttpClientTestingModule,
+        SharedComponentsModule,
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(RegisterComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})
