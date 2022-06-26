@@ -61,7 +61,7 @@ export class AuthenticationService {
     console.log('EMAIL: ', email)
     return of({}).pipe(
       tap(() => {
-        this.router.navigate(['/check-your-email'])
+        this.router.navigate(['/auth/check-your-email'])
       })
     )
   }

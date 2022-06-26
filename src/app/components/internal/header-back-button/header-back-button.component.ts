@@ -13,6 +13,10 @@ import { Location } from '@angular/common'
       :host {
         width: 100%;
       }
+
+      header {
+        display: flex;
+      }
     `,
   ],
 })
