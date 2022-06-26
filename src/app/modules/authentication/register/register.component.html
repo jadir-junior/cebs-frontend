@@ -6,7 +6,9 @@
     <cebs-title color="primary">Crie uma Nova Conta</cebs-title>
   </div>
   <div class="wrapper-text">
-    <cebs-text> Crie uma nova conta para poder gerenciar suas contabilidades </cebs-text>
+    <cebs-text data-testid="description">
+      Crie uma nova conta para poder gerenciar suas contabilidades
+    </cebs-text>
   </div>
   <div class="wrapper-form">
     <form [formGroup]="form" (submit)="onSubmit(form)">
