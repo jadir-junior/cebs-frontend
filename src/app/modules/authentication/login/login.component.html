@@ -37,7 +37,9 @@
       </cebs-form>
     </div>
     <div class="wrapper-link">
-      <cebs-link routerLink="/auth/forgot-password">Esqueceu sua senha?</cebs-link>
+      <cebs-link routerLink="/auth/forgot-password" data-testid="forgot-password">
+        Esqueceu sua senha?
+      </cebs-link>
     </div>
     <cebs-button [block]="true" color="primary" type="submit" data-testid="button-login">
       Login
@@ -46,7 +48,7 @@
   <div class="wrapper-dont-have-account">
     <cebs-text>
       Vocẽ não tem uma conta?
-      <cebs-link routerLink="/auth/register">Cadastre!</cebs-link>
+      <cebs-link routerLink="/auth/register" data-testid="register">Cadastre!</cebs-link>
     </cebs-text>
   </div>
 </cebs-container>
