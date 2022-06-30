@@ -41,3 +41,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('goToLogin', () => {
+  const URL = `${Cypress.env('BASE_URL')}/auth/login`
+
+  cy.visit(URL)
+})

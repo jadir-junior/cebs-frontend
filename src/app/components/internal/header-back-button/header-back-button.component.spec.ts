@@ -1,26 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { Spectator, byLabel, byText, createComponentFactory } from '@ngneat/spectator'
+import { render, screen } from '@testing-library/angular'
 
 import { HeaderBackButtonComponent } from './header-back-button.component'
-import { NO_ERRORS_SCHEMA } from '@angular/core'
+import { IconButtonComponent } from '../../external/icon-button/icon-button.component'
+import { IconButtonModule } from '../../external/icon-button/icon-button.module'
+import { Location } from '@angular/common'
+import { MockModule } from 'ng-mocks'
 
 describe('HeaderBackButtonComponent', () => {
-  let component: HeaderBackButtonComponent
-  let fixture: ComponentFixture<HeaderBackButtonComponent>
+  it('should render a header back button component', async () => {
+    await render(HeaderBackButtonComponent)
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [HeaderBackButtonComponent],
-      schemas: [NO_ERRORS_SCHEMA],
-    }).compileComponents()
-  })
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderBackButtonComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
-
-  it('should create', () => {
-    expect(component).toBeTruthy()
+    expect(screen.getByLabelText(/back button/gi)).toBeDefined()
   })
 })

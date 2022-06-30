@@ -5,7 +5,12 @@ import { Location } from '@angular/common'
   selector: 'cebs-header-back-button',
   template: `
     <header>
-      <cebs-icon-button icon="chevron_left" (clickEvent)="goBack()"></cebs-icon-button>
+      <cebs-icon-button
+        icon="chevron_left"
+        aria-label="back button"
+        (clickEvent)="goBack()"
+      ></cebs-icon-button>
+      <div class="content" *ngIf="visible">Something</div>
     </header>
   `,
   styles: [
@@ -21,9 +26,12 @@ import { Location } from '@angular/common'
   ],
 })
 export class HeaderBackButtonComponent {
+  visible = false
+
   constructor(private location: Location) {}
 
   goBack(): void {
-    this.location.back()
+    // this.location.back()
+    this.visible = !this.visible
   }
 }
