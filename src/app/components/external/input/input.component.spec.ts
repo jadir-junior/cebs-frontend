@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
+import { AutofocusDirective } from './autofocus.directive'
+import { CommonModule } from '@angular/common'
 import { InputComponent } from './input.component'
+import { MockDirective } from 'ng-mocks'
 
 describe('InputComponent', () => {
   let component: InputComponent
@@ -8,7 +11,8 @@ describe('InputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InputComponent],
+      imports: [CommonModule],
+      declarations: [InputComponent, MockDirective(AutofocusDirective)],
     }).compileComponents()
   })
 

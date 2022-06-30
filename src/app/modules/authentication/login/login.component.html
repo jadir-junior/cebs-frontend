@@ -12,7 +12,12 @@
   <form [formGroup]="form" (submit)="onSubmit(form)" style="width: 100%">
     <div class="wrapper-input">
       <cebs-form>
-        <cebs-input type="email" placeholder="Email" formControlName="email"></cebs-input>
+        <cebs-input
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          [autofocus]="true"
+        ></cebs-input>
         <cebs-error-validation-email
           [email]="email"
           [submitted]="submitted"
