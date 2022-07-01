@@ -41,5 +41,5 @@ jobs:
       - name: Building
         run: npm run build
 
-      - name: Unit Testing (Jest + Spectator)
+      - name: Unit Testing (Jest + Testing Library Angular)
         run: npm run test
