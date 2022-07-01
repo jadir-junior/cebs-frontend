@@ -10,7 +10,11 @@ import { Component } from '@angular/core'
       <cebs-header-back-button></cebs-header-back-button>
       <div class="wrapper-content-center">
         <div class="wrapper-mascot">
-          <cebs-mascot-suspect [width]="130" [height]="161"></cebs-mascot-suspect>
+          <cebs-mascot-suspect
+            aria-label="mascot-suspect"
+            [width]="130"
+            [height]="161"
+          ></cebs-mascot-suspect>
         </div>
         <div class="wrapper-text">
           <cebs-title color="primary">Esqueceu sua senha?</cebs-title>
@@ -26,13 +30,16 @@ import { Component } from '@angular/core'
               type="email"
               placeholder="Email"
               formControlName="email"
+              ariaLabel="email"
             ></cebs-input>
             <cebs-error-validation-email
               [email]="email"
               [submitted]="submitted"
             ></cebs-error-validation-email>
           </cebs-form>
-          <cebs-button type="submit" [block]="true" color="primary">Enviar</cebs-button>
+          <cebs-button ariaLabel="send" type="submit" [block]="true" color="primary">
+            Enviar
+          </cebs-button>
         </form>
       </div>
       <div>
