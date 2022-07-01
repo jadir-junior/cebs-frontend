@@ -7,12 +7,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
       [type]="type"
       [disabled]="disabled"
       [attr.aria-disabled]="disabled"
+      [attr.aria-label]="ariaLabel"
       [ngClass]="{
         'default': color === 'default',
         'primary': color === 'primary',
         'block': block
       }"
       (click)="onClick()"
+      aria-label="button"
     >
       <ng-content></ng-content>
     </button>
@@ -48,6 +50,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   ],
 })
 export class ButtonComponent {
+  @Input() ariaLabel!: string
   @Input() disabled = false
   @Input() type: 'submit' | 'button' = 'button'
   @Input() color: 'primary' | 'default' = 'default'

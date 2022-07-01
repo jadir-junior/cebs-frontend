@@ -23,14 +23,16 @@ const INPUT_VALUE_ACCESSOR: Provider = {
         [value]="value"
         [disabled]="disabled"
         [attr.placeholder]="placeholder"
+        [attr.aria-label]="ariaLabel"
+        [autoFocus]="autofocus"
         (keyup)="onInputChange($event)"
         (focus)="markAsTouched()"
-        [autoFocus]="autofocus"
       />
       <button
         *ngIf="appendIcon"
         class="material-symbols-outlined append-icon"
         type="button"
+        aria-label="append-icon-button"
         [disabled]="disabled"
         (click)="onAppendIconClick()"
       >
@@ -47,6 +49,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() placeholder!: string
   @Input() error = false
   @Input() autofocus = false
+  @Input() ariaLabel!: string
 
   @Output() appendIconClickEvent = new EventEmitter()
 

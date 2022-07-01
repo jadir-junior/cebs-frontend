@@ -16,7 +16,7 @@
           type="email"
           placeholder="Email"
           formControlName="email"
-          aria-label="email"
+          ariaLabel="email"
           [autofocus]="true"
         ></cebs-input>
         <cebs-error-validation-email
@@ -32,7 +32,7 @@
           placeholder="Password"
           formControlName="password"
           data-testid="password"
-          aria-label="password"
+          ariaLabel="password"
           [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
           [type]="showPassword ? 'text' : 'password'"
           (appendIconClickEvent)="toggleVisibility()"
@@ -53,11 +53,11 @@
       </cebs-link>
     </div>
     <cebs-button
-      aria-label="login button"
-      [block]="true"
+      ariaLabel="submit"
       color="primary"
       type="submit"
       data-testid="button-login"
+      [block]="true"
     >
       Login
     </cebs-button>
