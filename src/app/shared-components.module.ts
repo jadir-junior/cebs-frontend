@@ -1,5 +1,6 @@
 import { ButtonModule } from './components/external/button/button.module'
 import { CheckboxModule } from './components/external/checkbox/checkbox.module'
+import { CommonModule } from '@angular/common'
 import { ContainerModule } from './components/external/container/container.module'
 import { ErrorModule } from './components/external/error/error.module'
 import { ErrorValidationEmailModule } from './components/internal/error-validation-email/error-validation-email.module'
@@ -19,6 +20,7 @@ import { TextModule } from './components/external/text/text.module'
 import { TitleModule } from './components/external/title/title.module'
 
 const modules = [
+  CommonModule,
   ContainerModule,
   TitleModule,
   LogoModule,

@@ -5,13 +5,21 @@ import { Location } from '@angular/common'
   selector: 'cebs-header-back-button',
   template: `
     <header>
-      <cebs-icon-button icon="chevron_left" (clickEvent)="goBack()"></cebs-icon-button>
+      <cebs-icon-button
+        icon="chevron_left"
+        aria-label="back button"
+        (clickEvent)="goBack()"
+      ></cebs-icon-button>
     </header>
   `,
   styles: [
     `
       :host {
         width: 100%;
+      }
+
+      header {
+        display: flex;
       }
     `,
   ],

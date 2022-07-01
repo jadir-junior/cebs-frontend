@@ -1,26 +1,31 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { render, screen } from '@testing-library/angular'
 
 import { HeaderBackButtonComponent } from './header-back-button.component'
-import { NO_ERRORS_SCHEMA } from '@angular/core'
+import { IconButtonComponent } from '../../external/icon-button/icon-button.component'
+import { Location } from '@angular/common'
+import { TestBed } from '@angular/core/testing'
+import userEvent from '@testing-library/user-event'
 
 describe('HeaderBackButtonComponent', () => {
-  let component: HeaderBackButtonComponent
-  let fixture: ComponentFixture<HeaderBackButtonComponent>
+  it('should render a header back button component', async () => {
+    await render(HeaderBackButtonComponent, {
+      declarations: [IconButtonComponent],
+    })
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [HeaderBackButtonComponent],
-      schemas: [NO_ERRORS_SCHEMA],
-    }).compileComponents()
+    expect(screen.getByLabelText(/back button/i)).toBeDefined()
+    expect(screen.getByLabelText(/icon button/i)).toBeDefined()
   })
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderBackButtonComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
+  it.skip('should call a Location.back when user click in the button', async () => {
+    await render(HeaderBackButtonComponent, {
+      declarations: [IconButtonComponent],
+    })
 
-  it('should create', () => {
-    expect(component).toBeTruthy()
+    const location = TestBed.inject(Location)
+    jest.spyOn(location, 'back')
+
+    const button = screen.getByLabelText(/icon button/i)
+    userEvent.click(button)
+    expect(location.back).toHaveBeenCalled()
   })
 })

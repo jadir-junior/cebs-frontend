@@ -1,5 +1,6 @@
 import { Spectator, createComponentFactory } from '@ngneat/spectator'
 
+import { CommonModule } from '@angular/common'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { LoginComponent } from './login.component'
 import { MockModule } from 'ng-mocks'

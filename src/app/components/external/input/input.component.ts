@@ -25,6 +25,7 @@ const INPUT_VALUE_ACCESSOR: Provider = {
         [attr.placeholder]="placeholder"
         (keyup)="onInputChange($event)"
         (focus)="markAsTouched()"
+        [autoFocus]="autofocus"
       />
       <button
         *ngIf="appendIcon"
@@ -45,6 +46,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() type: 'text' | 'email' | 'password' | 'tel' = 'text'
   @Input() placeholder!: string
   @Input() error = false
+  @Input() autofocus = false
 
   @Output() appendIconClickEvent = new EventEmitter()
 

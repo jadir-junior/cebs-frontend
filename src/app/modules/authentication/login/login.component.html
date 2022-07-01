@@ -12,7 +12,12 @@
   <form [formGroup]="form" (submit)="onSubmit(form)" style="width: 100%">
     <div class="wrapper-input">
       <cebs-form>
-        <cebs-input type="email" placeholder="Email" formControlName="email"></cebs-input>
+        <cebs-input
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          [autofocus]="true"
+        ></cebs-input>
         <cebs-error-validation-email
           [email]="email"
           [submitted]="submitted"
@@ -37,7 +42,9 @@
       </cebs-form>
     </div>
     <div class="wrapper-link">
-      <cebs-link routerLink="/auth/forgot-password">Esqueceu sua senha?</cebs-link>
+      <cebs-link routerLink="/auth/forgot-password" data-testid="forgot-password">
+        Esqueceu sua senha?
+      </cebs-link>
     </div>
     <cebs-button [block]="true" color="primary" type="submit" data-testid="button-login">
       Login
@@ -46,7 +53,7 @@
   <div class="wrapper-dont-have-account">
     <cebs-text>
       Vocẽ não tem uma conta?
-      <cebs-link routerLink="/auth/register">Cadastre!</cebs-link>
+      <cebs-link routerLink="/auth/register" data-testid="register">Cadastre!</cebs-link>
     </cebs-text>
   </div>
 </cebs-container>

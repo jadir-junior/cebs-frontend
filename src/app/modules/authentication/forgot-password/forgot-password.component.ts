@@ -17,7 +17,7 @@ import { Component } from '@angular/core'
         </div>
         <div class="wrapper-text">
           <cebs-text>
-            Preencha seu e-amil abaixo e receba as instruções de resete de senha
+            Preencha seu e-mail abaixo e receba as instruções de resete de senha
           </cebs-text>
         </div>
         <form class="wrapper-form" [formGroup]="form" (submit)="onSubmit(form)">

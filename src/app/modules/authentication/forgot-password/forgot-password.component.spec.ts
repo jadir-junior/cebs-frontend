@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { ForgotPasswordComponent } from './forgot-password.component'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { MockModule } from 'ng-mocks'
 import { NO_ERRORS_SCHEMA } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
@@ -18,7 +19,7 @@ describe('ForgotPasswordComponent', () => {
         ReactiveFormsModule,
         RouterTestingModule,
         HttpClientTestingModule,
-        SharedComponentsModule,
+        MockModule(SharedComponentsModule),
       ],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents()
