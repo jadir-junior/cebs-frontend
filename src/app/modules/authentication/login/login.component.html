@@ -1,10 +1,10 @@
 <cebs-container>
   <div class="wrapper-logo">
-    <cebs-logo></cebs-logo>
+    <cebs-logo aria-label="logo"></cebs-logo>
   </div>
-  <cebs-title color="primary">Bem vinda(o)!</cebs-title>
+  <cebs-title color="primary" aria-label="title">Bem vinda(o)!</cebs-title>
   <div class="wrapper-text">
-    <cebs-text>
+    <cebs-text aria-label="description">
       Eu estou tão feliz em te ver. Você pode continuar fazendo login para gerenciar suas
       contabilidades
     </cebs-text>
@@ -16,6 +16,7 @@
           type="email"
           placeholder="Email"
           formControlName="email"
+          aria-label="email"
           [autofocus]="true"
         ></cebs-input>
         <cebs-error-validation-email
@@ -30,10 +31,11 @@
         <cebs-input
           placeholder="Password"
           formControlName="password"
+          data-testid="password"
+          aria-label="password"
           [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
           [type]="showPassword ? 'text' : 'password'"
           (appendIconClickEvent)="toggleVisibility()"
-          data-testid="password"
         ></cebs-input>
         <cebs-error-validation-password
           [password]="password"
@@ -42,18 +44,30 @@
       </cebs-form>
     </div>
     <div class="wrapper-link">
-      <cebs-link routerLink="/auth/forgot-password" data-testid="forgot-password">
+      <cebs-link
+        routerLink="/auth/forgot-password"
+        aria-label="forgot password"
+        data-testid="forgot-password"
+      >
         Esqueceu sua senha?
       </cebs-link>
     </div>
-    <cebs-button [block]="true" color="primary" type="submit" data-testid="button-login">
+    <cebs-button
+      aria-label="login button"
+      [block]="true"
+      color="primary"
+      type="submit"
+      data-testid="button-login"
+    >
       Login
     </cebs-button>
   </form>
   <div class="wrapper-dont-have-account">
-    <cebs-text>
-      Vocẽ não tem uma conta?
-      <cebs-link routerLink="/auth/register" data-testid="register">Cadastre!</cebs-link>
+    <cebs-text aria-label="dont have an account">
+      Você não tem uma conta?
+      <cebs-link routerLink="/auth/register" data-testid="register" aria-label="register">
+        Cadastre!
+      </cebs-link>
     </cebs-text>
   </div>
 </cebs-container>
