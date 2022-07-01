@@ -16,7 +16,7 @@ describe('HeaderBackButtonComponent', () => {
     expect(screen.getByLabelText(/icon button/i)).toBeDefined()
   })
 
-  it.skip('should call a Location.back when user click in the button', async () => {
+  it('should call a Location.back when user click in the button', async () => {
     await render(HeaderBackButtonComponent, {
       declarations: [IconButtonComponent],
     })
@@ -25,7 +25,7 @@ describe('HeaderBackButtonComponent', () => {
     jest.spyOn(location, 'back')
 
     const button = screen.getByLabelText(/icon button/i)
-    userEvent.click(button)
+    await userEvent.click(button)
     expect(location.back).toHaveBeenCalled()
   })
 })
