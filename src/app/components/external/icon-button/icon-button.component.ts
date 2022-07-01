@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
 @Component({
   selector: 'cebs-icon-button',
   template: `
-    <button (click)="onClick()">
+    <button (click)="onClick()" aria-label="icon button">
       <span class="material-symbols-outlined icon">{{ icon }}</span>
     </button>
   `,
@@ -28,7 +28,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
 })
 export class IconButtonComponent {
   @Output() clickEvent = new EventEmitter()
-
   @Input() icon!: string
 
   onClick(): void {

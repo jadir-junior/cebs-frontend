@@ -10,7 +10,6 @@ import { Location } from '@angular/common'
         aria-label="back button"
         (clickEvent)="goBack()"
       ></cebs-icon-button>
-      <div class="content" *ngIf="visible">Something</div>
     </header>
   `,
   styles: [
@@ -26,12 +25,9 @@ import { Location } from '@angular/common'
   ],
 })
 export class HeaderBackButtonComponent {
-  visible = false
-
   constructor(private location: Location) {}
 
   goBack(): void {
-    // this.location.back()
-    this.visible = !this.visible
+    this.location.back()
   }
 }
