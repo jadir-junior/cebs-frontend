@@ -4,9 +4,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   selector: 'cebs-button',
   template: `
     <button
+      [attr.role]="type"
       [type]="type"
       [disabled]="disabled"
       [attr.aria-disabled]="disabled"
+      [attr.aria-label]="ariaLabel"
       [ngClass]="{
         'default': color === 'default',
         'primary': color === 'primary',
@@ -48,6 +50,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   ],
 })
 export class ButtonComponent {
+  @Input() ariaLabel!: string
   @Input() disabled = false
   @Input() type: 'submit' | 'button' = 'button'
   @Input() color: 'primary' | 'default' = 'default'
