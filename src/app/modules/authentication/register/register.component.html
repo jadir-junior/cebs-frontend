@@ -13,7 +13,12 @@
   <div class="wrapper-form">
     <form [formGroup]="form" (submit)="onSubmit(form)">
       <cebs-form>
-        <cebs-input type="text" formControlName="name" placeholder="Nome"></cebs-input>
+        <cebs-input
+          type="text"
+          formControlName="name"
+          placeholder="Nome"
+          ariaLabel="name"
+        ></cebs-input>
         <cebs-error
           *ngIf="((name.touched && name.dirty) || submitted) && name.errors?.['required']"
         >
@@ -24,7 +29,12 @@
         </cebs-error>
       </cebs-form>
       <cebs-form>
-        <cebs-input type="email" formControlName="email" placeholder="Email"></cebs-input>
+        <cebs-input
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          ariaLabel="email"
+        ></cebs-input>
         <cebs-error-validation-email
           [email]="email"
           [submitted]="submitted"
@@ -32,9 +42,10 @@
       </cebs-form>
       <cebs-form>
         <cebs-input
-          [type]="showPassword ? 'text' : 'password'"
           formControlName="password"
           placeholder="Senha"
+          ariaLabel="password"
+          [type]="showPassword ? 'text' : 'password'"
           [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
           (appendIconClickEvent)="toggleVisibility()"
         ></cebs-input>
@@ -45,7 +56,7 @@
       </cebs-form>
       <div class="wrapper-checkbox">
         <div class="wrapper-checkbox-label">
-          <cebs-checkbox formControlName="terms"></cebs-checkbox>
+          <cebs-checkbox ariaLabel="terms" formControlName="terms"></cebs-checkbox>
           <cebs-text>
             Eu aceito os <cebs-link>Termos de Serviço</cebs-link> e a
             <cebs-link>Politica de Privacidade</cebs-link>
@@ -56,7 +67,7 @@
         </cebs-error>
       </div>
 
-      <cebs-button type="submit" color="primary" [block]="true">
+      <cebs-button ariaLabel="register" type="submit" color="primary" [block]="true">
         Criar uma Conta
       </cebs-button>
     </form>

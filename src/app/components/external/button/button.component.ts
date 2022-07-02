@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   selector: 'cebs-button',
   template: `
     <button
+      [attr.role]="type"
       [type]="type"
       [disabled]="disabled"
       [attr.aria-disabled]="disabled"
@@ -14,7 +15,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
         'block': block
       }"
       (click)="onClick()"
-      aria-label="button"
     >
       <ng-content></ng-content>
     </button>

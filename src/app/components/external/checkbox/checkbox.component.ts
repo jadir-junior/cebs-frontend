@@ -14,9 +14,12 @@ const CHECKBOX_VALUE_ACCESSOR: Provider = {
       <input
         id="checkbox"
         type="checkbox"
+        role="checkbox"
+        [attr.aria-label]="ariaLabel"
+        [attr.aria-checked]="checked"
         [checked]="checked"
-        (click)="onCheckChange($event)"
         [disabled]="disabled"
+        (click)="onCheckChange($event)"
       />
       <span class="label-text" *ngIf="label">{{ label }}</span>
     </label>
@@ -26,6 +29,7 @@ const CHECKBOX_VALUE_ACCESSOR: Provider = {
 })
 export class CheckboxComponent implements ControlValueAccessor {
   @Input() label?: string
+  @Input() ariaLabel!: string
 
   disabled = false
   checked = false

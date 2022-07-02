@@ -19,6 +19,7 @@ const INPUT_VALUE_ACCESSOR: Provider = {
   template: `
     <div class="wrapper-input" [ngClass]="{ 'disabled': disabled, 'error': 'error' }">
       <input
+        role="textbox"
         [type]="type"
         [value]="value"
         [disabled]="disabled"
