@@ -46,7 +46,7 @@ describe('ForgotPasswordComponent', () => {
   })
 
   it('when user clicks on button send without fill the email field must to show required error', async () => {
-    const button = getByRole('button', { name: /send/i })
+    const button = getByRole('submit', { name: /send/i })
     await userEvent.click(button)
 
     expect(getByText(/o email é obrigatório/i)).toBeInTheDocument()
@@ -55,7 +55,7 @@ describe('ForgotPasswordComponent', () => {
 
   it('should show the email error if a user enter with a email incorrectly', async () => {
     const input = getByRole('textbox', { name: 'email' })
-    const button = getByRole('button', { name: /send/i })
+    const button = getByRole('submit', { name: /send/i })
 
     await userEvent.type(input, 'invalid-email')
     await userEvent.click(button)
@@ -67,7 +67,7 @@ describe('ForgotPasswordComponent', () => {
   it('should send email reset password', async () => {
     forgotPasswordSpy.mockReturnValue(of({}))
     const input = getByRole('textbox', { name: 'email' })
-    const button = getByRole('button', { name: /send/i })
+    const button = getByRole('submit', { name: /send/i })
 
     await userEvent.type(input, 'arodini@gmail.com')
     await userEvent.click(button)
