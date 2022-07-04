@@ -2,7 +2,7 @@
   "name": "Cebs",
   "short_name": "Cebs",
   "theme_color": "#9a178f",
-  "background_color": "#fafafa",
+  "background_color": "#9a178f",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
