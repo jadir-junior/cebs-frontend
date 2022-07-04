@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'cebs-logo',
@@ -23,13 +23,21 @@ import { Component } from '@angular/core'
           y2="123.841"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#D654B1" />
-          <stop offset="0.5" stop-color="#C70C8D" />
-          <stop offset="1" stop-color="#9A178F" />
+          <stop [attr.stop-color]="color === 'primary' ? '#D654B1' : '#FFFFFF'" />
+          <stop
+            offset="0.5"
+            [attr.stop-color]="color === 'primary' ? '#C70C8D' : '#FFFFFF'"
+          />
+          <stop
+            offset="1"
+            [attr.stop-color]="color === 'primary' ? '#9A178F' : '#FFFFFF'"
+          />
         </linearGradient>
       </defs>
     </svg>
   `,
   styles: [],
 })
-export class LogoComponent {}
+export class LogoComponent {
+  @Input() color: 'primary' | 'white' = 'primary'
+}

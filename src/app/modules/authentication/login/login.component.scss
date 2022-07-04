@@ -1,6 +1,39 @@
+.wrapper-left-login-desktop {
+  background: rgb(89, 53, 124);
+  background: linear-gradient(90deg, rgba(89, 53, 124, 1) 0%, rgba(150, 41, 126, 1) 100%);
+  width: 50%;
+}
+
+.wrapper-left-logo-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.wrapper-container {
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    padding: 0;
+  }
+
+  width: 50%;
+  padding: 10%;
+}
+
 .wrapper-logo {
   text-align: center;
   margin-bottom: 24px;
+}
+
+.wrapper-title {
+  @media only screen and (max-width: 480px) {
+    text-align: center;
+  }
+
+  width: 100%;
+  text-align: left;
 }
 
 .wrapper-text {
