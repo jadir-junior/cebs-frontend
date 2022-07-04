@@ -30,6 +30,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
         border: none;
         border-radius: 12px;
         box-shadow: 0px 8px 12px -10px black;
+        cursor: pointer;
       }
 
       .primary {

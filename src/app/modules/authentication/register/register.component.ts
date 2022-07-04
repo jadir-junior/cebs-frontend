@@ -10,6 +10,7 @@ import { ValidationService } from '../../../common/validation/validation.service
   styleUrls: ['register.component.scss'],
 })
 export class RegisterComponent {
+  isMobile = false
   showPassword = false
   submitted = false
 
@@ -58,5 +59,9 @@ export class RegisterComponent {
       const { name, email, password } = value
       this.authenticationService.register(name, email, password).subscribe(() => {})
     }
+  }
+
+  onScreenChange(value: boolean) {
+    this.isMobile = value
   }
 }

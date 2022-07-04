@@ -17,7 +17,7 @@ export interface IWindowSize {
 })
 export class WindowResizeDirective implements OnInit {
   @Output() windowResizeEvent = new EventEmitter<IWindowSize>()
-  @Output() isMobileEvent = new EventEmitter<boolean>()
+  @Output() isMobileEvent = new EventEmitter<boolean>(false)
 
   @Input() MOBILE_WIDTH = 480
 
