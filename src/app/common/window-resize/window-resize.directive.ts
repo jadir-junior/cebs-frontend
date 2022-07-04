@@ -30,7 +30,9 @@ export class WindowResizeDirective implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isMobile()
+    setTimeout(() => {
+      this.isMobile()
+    })
   }
 
   setWindowValues(): void {

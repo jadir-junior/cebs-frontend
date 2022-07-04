@@ -20,6 +20,17 @@ describe('LoginComponent', () => {
   const { getByLabelText, getByText } = screen
   const loginSpy = jest.fn()
 
+  beforeAll(() => {
+    window.resizeTo = function resizeTo(width, height) {
+      Object.assign(this, {
+        innerWidth: width,
+        height: height,
+        outerWidth: width,
+        outerHeight: height,
+      }).dispatchEvent(new this.Event('resize'))
+    }
+  })
+
   beforeEach(async () => {
     await render(LoginComponent, {
       imports: [...modules],
@@ -35,6 +46,7 @@ describe('LoginComponent', () => {
   })
 
   it('should create a login component with children components', async () => {
+    window.resizeTo(375, 667)
     expect(getByLabelText(/logo/i)).toBeInTheDocument()
     expect(getByLabelText(/title/i)).toHaveTextContent('Bem vinda(o)!')
     expect(getByLabelText(/description/i)).toHaveTextContent(
