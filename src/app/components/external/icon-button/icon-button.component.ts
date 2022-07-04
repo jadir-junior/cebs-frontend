@@ -3,7 +3,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
 @Component({
   selector: 'cebs-icon-button',
   template: `
-    <button (click)="onClick()" aria-label="icon button">
+    <button
+      [attr.aria-label]="ariaLabel"
+      (click)="onClick()"
+      [ngClass]="{
+        'default': color === 'default',
+        'primary': color === 'primary',
+        'rounded': rounded
+      }"
+    >
       <span class="material-symbols-outlined icon">{{ icon }}</span>
     </button>
   `,
@@ -13,22 +21,49 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
         border: none;
         width: 40px;
         height: 40px;
-        border-radius: 50%;
+        background-color: white;
+        border-radius: 8px;
+        cursor: pointer;
+
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: var(--primary-color);
       }
 
-      .icon {
+      .default {
+        color: var(--color-button-default);
+
+        &:hover {
+          background-color: var(--primary-color-hover);
+
+          .icon {
+            color: var(--primary-color);
+          }
+        }
+      }
+
+      .primary {
+        background-color: var(--primary-color);
         color: white;
+
+        &:hover {
+          background-color: var(--primary-color-hover-dark);
+        }
+      }
+
+      .rounded {
+        border-radius: 50%;
       }
     `,
   ],
 })
 export class IconButtonComponent {
   @Output() clickEvent = new EventEmitter()
+
+  @Input() ariaLabel!: string
   @Input() icon!: string
+  @Input() color: 'primary' | 'default' = 'default'
+  @Input() rounded = false
 
   onClick(): void {
     this.clickEvent.emit()
