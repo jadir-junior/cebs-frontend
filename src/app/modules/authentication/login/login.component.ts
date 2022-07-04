@@ -2,7 +2,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { AuthenticationService } from '../authentication.service'
 import { Component } from '@angular/core'
-import { ValidationService } from '../../../common/validation.service'
+import { ValidationService } from '../../../common/validation/validation.service'
 
 @Component({
   selector: 'app-login',
@@ -12,6 +12,7 @@ import { ValidationService } from '../../../common/validation.service'
 export class LoginComponent {
   showPassword = false
   submitted = false
+  isMobile = true
 
   form: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -47,5 +48,9 @@ export class LoginComponent {
     if (valid) {
       this.authenticationService.login(value.email, value.password).subscribe(() => {})
     }
+  }
+
+  onScreenChange(value: boolean) {
+    this.isMobile = value
   }
 }

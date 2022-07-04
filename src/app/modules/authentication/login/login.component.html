@@ -1,73 +1,101 @@
-<cebs-container>
-  <div class="wrapper-logo">
-    <cebs-logo aria-label="logo"></cebs-logo>
-  </div>
-  <cebs-title color="primary" aria-label="title">Bem vinda(o)!</cebs-title>
-  <div class="wrapper-text">
-    <cebs-text aria-label="description">
-      Eu estou tão feliz em te ver. Você pode continuar fazendo login para gerenciar suas
-      contabilidades
-    </cebs-text>
-  </div>
-  <form [formGroup]="form" (submit)="onSubmit(form)" style="width: 100%">
-    <div class="wrapper-input">
-      <cebs-form>
-        <cebs-input
-          type="email"
-          placeholder="Email"
-          formControlName="email"
-          ariaLabel="email"
-          [autofocus]="true"
-        ></cebs-input>
-        <cebs-error-validation-email
-          [email]="email"
-          [submitted]="submitted"
-        ></cebs-error-validation-email>
-      </cebs-form>
+<div style="height: 100%; width: 100%; display: flex">
+  <div class="wrapper-left-login-desktop" *ngIf="isMobile ? false : true">
+    <div class="wrapper-left-logo-title">
+      <cebs-logo color="white"></cebs-logo>
+      <cebs-title weight="thin" color="white" size="large" style="margin-top: 24px">
+        Cebs Conts.
+      </cebs-title>
     </div>
-
-    <div class="wrapper-input">
-      <cebs-form>
-        <cebs-input
-          placeholder="Password"
-          formControlName="password"
-          data-testid="password"
-          ariaLabel="password"
-          [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
-          [type]="showPassword ? 'text' : 'password'"
-          (appendIconClickEvent)="toggleVisibility()"
-        ></cebs-input>
-        <cebs-error-validation-password
-          [password]="password"
-          [submitted]="submitted"
-        ></cebs-error-validation-password>
-      </cebs-form>
+  </div>
+  <cebs-container
+    resize
+    (isMobileEvent)="onScreenChange($event)"
+    class="wrapper-container"
+  >
+    <div class="wrapper-logo" *ngIf="isMobile ? true : false">
+      <cebs-logo aria-label="logo"></cebs-logo>
     </div>
-    <div class="wrapper-link">
-      <cebs-link
-        routerLink="/auth/forgot-password"
-        aria-label="forgot password"
-        data-testid="forgot-password"
+    <div class="wrapper-title">
+      <cebs-title
+        color="primary"
+        aria-label="title"
+        [size]="isMobile ? 'medium' : 'large'"
       >
-        Esqueceu sua senha?
-      </cebs-link>
+        Bem vinda(o)!
+      </cebs-title>
     </div>
-    <cebs-button
-      ariaLabel="submit"
-      color="primary"
-      type="submit"
-      data-testid="button-login"
-      [block]="true"
-    >
-      Login
-    </cebs-button>
-  </form>
-  <div class="wrapper-dont-have-account">
-    <cebs-text aria-label="dont have an account">
-      Você não tem uma conta?
-      <cebs-link routerLink="/auth/register" data-testid="register" aria-label="register">
-        Cadastre!
-      </cebs-link>
-    </cebs-text>
-  </div>
-</cebs-container>
+    <div class="wrapper-text">
+      <cebs-text aria-label="description">
+        Eu estou tão feliz em te ver. Você pode continuar fazendo login para gerenciar
+        suas contabilidades
+      </cebs-text>
+    </div>
+    <form [formGroup]="form" (submit)="onSubmit(form)" style="width: 100%">
+      <div class="wrapper-input">
+        <cebs-form>
+          <cebs-input
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+            ariaLabel="email"
+            [autofocus]="true"
+          ></cebs-input>
+          <cebs-error-validation-email
+            [email]="email"
+            [submitted]="submitted"
+          ></cebs-error-validation-email>
+        </cebs-form>
+      </div>
+
+      <div class="wrapper-input">
+        <cebs-form>
+          <cebs-input
+            placeholder="Password"
+            formControlName="password"
+            data-testid="password"
+            ariaLabel="password"
+            [appendIcon]="showPassword ? 'visibility_off' : 'visibility'"
+            [type]="showPassword ? 'text' : 'password'"
+            (appendIconClickEvent)="toggleVisibility()"
+          ></cebs-input>
+          <cebs-error-validation-password
+            [password]="password"
+            [submitted]="submitted"
+          ></cebs-error-validation-password>
+        </cebs-form>
+      </div>
+      <div class="wrapper-link">
+        <cebs-link
+          routerLink="/auth/forgot-password"
+          aria-label="forgot password"
+          data-testid="forgot-password"
+        >
+          Esqueceu sua senha?
+        </cebs-link>
+      </div>
+      <div style="text-align: right">
+        <cebs-button
+          ariaLabel="submit"
+          color="primary"
+          type="submit"
+          data-testid="button-login"
+          [block]="isMobile ? true : false"
+        >
+          Login
+        </cebs-button>
+      </div>
+    </form>
+    <div class="wrapper-dont-have-account">
+      <cebs-text aria-label="dont have an account">
+        Você não tem uma conta?
+        <cebs-link
+          routerLink="/auth/register"
+          data-testid="register"
+          aria-label="register"
+        >
+          Cadastre!
+        </cebs-link>
+      </cebs-text>
+    </div>
+  </cebs-container>
+</div>
