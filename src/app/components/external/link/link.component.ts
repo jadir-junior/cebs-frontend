@@ -13,6 +13,7 @@ import { Component, Input } from '@angular/core'
         text-decoration: none;
         color: var(--primary-color);
         font-weight: 500;
+        cursor: pointer;
       }
     `,
   ],
