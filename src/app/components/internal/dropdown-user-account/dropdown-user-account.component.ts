@@ -14,25 +14,29 @@ import { Component } from '@angular/core'
         </div>
         <div>
           <div style="display: flex">
-            <cebs-title size="small" style="margin-right: 8px">Max Smith</cebs-title>
-            <div class="badge">Pro</div>
+            <cebs-title size="small" style="margin-right: 8px" aria-label="name">
+              Max Smith
+            </cebs-title>
+            <cebs-tag aria-label="tag">Pro</cebs-tag>
           </div>
-          <cebs-text size="small">max@kt.com</cebs-text>
+          <cebs-text size="small" aria-label="email">max@kt.com</cebs-text>
         </div>
       </div>
       <div class="wrapper-list" style="border-bottom: 1px solid #eee">
-        <ul>
-          <li>My Profile</li>
-          <li>My Projects <span>3</span></li>
-          <li>My Subscription <span>icone</span></li>
-        </ul>
+        <cebs-list>
+          <cebs-item aria-label="my profile">My Profile</cebs-item>
+          <cebs-item aria-label="my projects">My Projects <span>3</span></cebs-item>
+          <cebs-item aria-label="my subscription">
+            My Subscription <span>icone</span>
+          </cebs-item>
+        </cebs-list>
       </div>
       <div class="wrapper-list">
-        <ul>
-          <li>Language <span>Select</span></li>
-          <li>Account Settings</li>
-          <li (click)="logout()">Logout</li>
-        </ul>
+        <cebs-list>
+          <cebs-item aria-lbel="language">Language <span>Select</span></cebs-item>
+          <cebs-item aria-label="account settings">Account Settings</cebs-item>
+          <cebs-item (click)="logout()" aria-label="logout">Logout</cebs-item>
+        </cebs-list>
       </div>
     </div>
   `,
@@ -44,30 +48,8 @@ import { Component } from '@angular/core'
         display: flex;
       }
 
-      .badge {
-        background-color: var(--primary-color-hover);
-        color: var(--primary-color);
-        padding: 2px 4px;
-        font-size: 10px;
-        font-weight: 600;
-        border-radius: 4px;
-      }
-
       .wrapper-list {
         padding: 8px 16px;
-
-        ul li {
-          font-weight: 500;
-          padding: 8px;
-          cursor: pointer;
-          color: var(--text-black);
-          border-radius: 4px;
-
-          &:hover {
-            color: var(--primary-color);
-            background-color: var(--primary-color-hover);
-          }
-        }
       }
     `,
   ],
