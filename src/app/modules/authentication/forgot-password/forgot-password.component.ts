@@ -89,7 +89,7 @@ export class ForgotPasswordComponent {
     this.submitted = true
     if (valid) {
       const { email } = value
-      this.authenticationService.forgotPassword(email).subscribe(() => {})
+      this.authenticationService.forgotPassword(email)
     }
   }
 }

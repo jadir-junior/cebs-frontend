@@ -1,4 +1,4 @@
-import { getByLabelText, render, screen, waitFor } from '@testing-library/angular'
+import { render, screen, waitFor } from '@testing-library/angular'
 
 import { DropdownModule } from './dropdown.module'
 import userEvent from '@testing-library/user-event'

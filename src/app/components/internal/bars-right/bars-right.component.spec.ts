@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/angular'
 
-import { AuthenticationService } from 'src/app/modules/authentication/authentication.service'
 import { AvatarModule } from '../../external/avatar/avatar.module'
 import { BarsRightComponent } from './bars-right.component'
 import { DropdownModule } from '../../external/dropdown/dropdown.module'
@@ -8,7 +7,6 @@ import { DropdownUserAccountModule } from '../dropdown-user-account/dropdown-use
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { IconButtonModule } from '../../external/icon-button/icon-button.module'
 import { WindowResizeModule } from 'src/app/common/window-resize/window-resize.module'
-import userEvent from '@testing-library/user-event'
 
 const modules = [
   HttpClientTestingModule,

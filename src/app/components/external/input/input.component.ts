@@ -19,6 +19,7 @@ const INPUT_VALUE_ACCESSOR: Provider = {
   template: `
     <div class="wrapper-input" [ngClass]="{ 'disabled': disabled, 'error': 'error' }">
       <input
+        #input
         role="textbox"
         [type]="type"
         [value]="value"
@@ -26,7 +27,7 @@ const INPUT_VALUE_ACCESSOR: Provider = {
         [attr.placeholder]="placeholder"
         [attr.aria-label]="ariaLabel"
         [autoFocus]="autofocus"
-        (keyup)="onInputChange($event)"
+        (input)="onInputChange(input.value)"
         (focus)="markAsTouched()"
       />
       <button
@@ -57,15 +58,15 @@ export class InputComponent implements ControlValueAccessor {
   disabled = false
   value: string | null = null
 
-  onChange!: (value: string | null) => {}
-  onTouched!: () => {}
+  onChange!: (value: string | null) => VoidFunction
+  onTouched!: VoidFunction
 
-  onInputChange(e: any): void {
+  onInputChange(value: string): void {
     if (this.disabled) {
       return
     }
 
-    this.value = e.target.value
+    this.value = value
     this.onChange(this.value)
   }
 
@@ -81,11 +82,11 @@ export class InputComponent implements ControlValueAccessor {
     this.value = value
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (value: string | null) => VoidFunction): void {
     this.onChange = fn
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: VoidFunction): void {
     this.onTouched = fn
   }
 

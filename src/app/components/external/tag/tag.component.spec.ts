@@ -1,4 +1,3 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { render, screen } from '@testing-library/angular'
 
 import { TagComponent } from './tag.component'

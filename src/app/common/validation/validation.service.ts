@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core'
 })
 export class ValidationService {
   passwordPatternValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
       if (!control.value) {
         return null
       }

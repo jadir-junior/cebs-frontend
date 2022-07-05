@@ -16,6 +16,5 @@ export class AppComponent implements OnInit {
 
   private updateOnlineStatus(): void {
     this.isOnline = window.navigator.onLine
-    console.info(`Cebs application is running in ${this.isOnline} mode`)
   }
 }
