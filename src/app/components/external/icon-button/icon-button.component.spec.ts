@@ -1,24 +1,39 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { render, screen } from '@testing-library/angular'
 
 import { IconButtonComponent } from './icon-button.component'
 
 describe('IconButtonComponent', () => {
-  let component: IconButtonComponent
-  let fixture: ComponentFixture<IconButtonComponent>
+  const { getByLabelText } = screen
+  it('should create a icon button default', async () => {
+    await render(
+      `<cebs-icon-button icon="search" ariaLabel="icon-button"></cebs-icon-button>`,
+      {
+        declarations: [IconButtonComponent],
+      }
+    )
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [IconButtonComponent],
-    }).compileComponents()
+    expect(getByLabelText('icon-button')).toHaveClass('default')
   })
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(IconButtonComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
+  it('should create a icon button primary', async () => {
+    await render(
+      `<cebs-icon-button icon="search" ariaLabel="icon-button" color="primary"></cebs-icon-button>`,
+      {
+        declarations: [IconButtonComponent],
+      }
+    )
+
+    expect(getByLabelText('icon-button')).toHaveClass('primary')
   })
 
-  it('should create', () => {
-    expect(component).toBeTruthy()
+  it('should create a icon button with rounded', async () => {
+    await render(
+      `<cebs-icon-button [rounded]="true" icon="search" ariaLabel="icon-button" color="primary"></cebs-icon-button>`,
+      {
+        declarations: [IconButtonComponent],
+      }
+    )
+
+    expect(getByLabelText('icon-button')).toHaveClass('primary', 'rounded')
   })
 })

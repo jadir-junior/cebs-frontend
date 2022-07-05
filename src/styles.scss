@@ -2,15 +2,17 @@
 
 :root {
   --primary-color: #9a178f;
+  --primary-color-hover: #ffeefe;
+  --primary-color-hover-dark: #ad40a4;
   --primary-color-rgb: 154, 23, 143;
+
+  --color-button-default: #a1a5b7;
 
   --form-control-form: var(--primary-color);
   --input-disabled: #959495;
 
   --text-dark-gray: #848a8d;
-
   --text-black: #1b262c;
-
   --text-error: #ff0033;
 
   --background-input: #f5f6f8;
