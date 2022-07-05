@@ -33,7 +33,7 @@ export class DropdownTriggerForDirective implements OnDestroy {
     this.overlayRef = this.overlay.create({
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-transparent-backdrop',
-      scrollStrategy: this.overlay.scrollStrategies.close(),
+      scrollStrategy: this.overlay.scrollStrategies.noop(),
       positionStrategy: this.overlay
         .position()
         .flexibleConnectedTo(this.elementRef)
@@ -62,9 +62,13 @@ export class DropdownTriggerForDirective implements OnDestroy {
   private dropdownClosingActions(): Observable<MouseEvent | unknown> {
     const backdropClick$ = this.overlayRef.backdropClick()
     const detachment$ = this.overlayRef.detachments()
-    const dropdownClosed = this.dropdownPanel.closed
+    // const dropdownClosed = this.dropdownPanel.closed
 
-    return merge(backdropClick$, detachment$, dropdownClosed)
+    return merge(
+      backdropClick$,
+      detachment$
+      // dropdownClosed
+    )
   }
 
   private destroyDropdown(): void {

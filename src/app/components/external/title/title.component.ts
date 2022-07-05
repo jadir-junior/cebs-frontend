@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core'
         'default': color === 'default',
         'primary': color === 'primary',
         'white': color === 'white',
+        'font-small': size === 'small',
         'font-medium': size === 'medium',
         'font-large': size === 'large',
         'font-weight-normal': weight === 'normal',
@@ -31,6 +32,10 @@ import { Component, Input } from '@angular/core'
         color: var(--primary-color);
       }
 
+      .font-small {
+        font-size: 1rem;
+      }
+
       .font-medium {
         font-size: 1.5rem;
       }
@@ -51,6 +56,6 @@ import { Component, Input } from '@angular/core'
 })
 export class TitleComponent {
   @Input() color: 'primary' | 'default' | 'white' = 'default'
-  @Input() size: 'medium' | 'large' = 'medium'
+  @Input() size: 'small' | 'medium' | 'large' = 'medium'
   @Input() weight: 'normal' | 'thin' = 'normal'
 }
