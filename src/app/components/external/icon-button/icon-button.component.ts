@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   selector: 'cebs-icon-button',
   template: `
     <button
+      role="button"
       [attr.aria-label]="ariaLabel"
       (click)="onClick()"
       [ngClass]="{
