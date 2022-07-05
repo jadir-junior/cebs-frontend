@@ -1,3 +1,5 @@
+import { AppBarsModule } from './components/external/app-bars/app-bars.module'
+import { BarsModule } from './components/internal/bars/bars.module'
 import { ButtonModule } from './components/external/button/button.module'
 import { CheckboxModule } from './components/external/checkbox/checkbox.module'
 import { CommonModule } from '@angular/common'
@@ -39,6 +41,7 @@ const modules = [
   HeaderBackButtonModule,
   ErrorValidationPasswordModule,
   CheckboxModule,
+  BarsModule,
 ]
 
 @NgModule({
