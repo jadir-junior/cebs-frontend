@@ -10,7 +10,13 @@ import { Component } from '@angular/core'
       <cebs-icon-button icon="notifications"></cebs-icon-button>
       <cebs-icon-button icon="chat"></cebs-icon-button>
       <cebs-icon-button icon="dashboard"></cebs-icon-button>
-      <cebs-icon-button icon="light_mode" (clickEvent)="logout()"></cebs-icon-button>
+      <cebs-icon-button
+        icon="light_mode"
+        [dropdownTriggerFor]="menuProfile"
+      ></cebs-icon-button>
+      <cebs-dropdown #menuProfile>
+        <div (click)="logout()">Logout</div>
+      </cebs-dropdown>
     </div>
   `,
   styles: [
