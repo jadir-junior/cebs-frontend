@@ -7,7 +7,9 @@ import { Location } from '@angular/common'
     <header>
       <cebs-icon-button
         icon="chevron_left"
-        aria-label="back button"
+        color="primary"
+        ariaLabel="back button"
+        [rounded]="true"
         (clickEvent)="goBack()"
       ></cebs-icon-button>
     </header>
