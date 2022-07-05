@@ -4,6 +4,7 @@ import { ButtonModule } from './components/external/button/button.module'
 import { CheckboxModule } from './components/external/checkbox/checkbox.module'
 import { CommonModule } from '@angular/common'
 import { ContainerModule } from './components/external/container/container.module'
+import { DropdownModule } from './components/external/dropdown/dropdown.module'
 import { ErrorModule } from './components/external/error/error.module'
 import { ErrorValidationEmailModule } from './components/internal/error-validation-email/error-validation-email.module'
 import { ErrorValidationPasswordModule } from './components/internal/error-validation-password/error-validation-password.module'
@@ -42,6 +43,7 @@ const modules = [
   ErrorValidationPasswordModule,
   CheckboxModule,
   BarsModule,
+  DropdownModule,
 ]
 
 @NgModule({

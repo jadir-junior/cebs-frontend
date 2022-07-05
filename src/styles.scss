@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/cdk/overlay-prebuilt.css';
 
 :root {
   --primary-color: #9a178f;
@@ -41,4 +42,11 @@ p {
   margin: 0;
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+ul {
+  list-style: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
 }
