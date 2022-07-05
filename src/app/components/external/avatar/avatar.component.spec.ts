@@ -1,23 +1,30 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { render, screen } from '@testing-library/angular'
 
-import { AvatarComponent } from './avatar.component';
+import { AvatarComponent } from './avatar.component'
 
 describe('AvatarComponent', () => {
-  let component: AvatarComponent;
-  let fixture: ComponentFixture<AvatarComponent>;
+  const { getByLabelText, getByRole } = screen
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AvatarComponent ]
+  it('should create avatar component with default props', async () => {
+    await render(`<cebs-avatar photo="fake-image.jpg" name="fake"></cebs-avatar>`, {
+      declarations: [AvatarComponent],
     })
-    .compileComponents();
 
-    fixture = TestBed.createComponent(AvatarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    expect(getByLabelText('avatar')).toBeInTheDocument()
+    expect(getByLabelText('avatar')).toHaveClass('medium')
+    expect(getByRole('img', { name: 'fake' })).toBeInTheDocument()
+    expect(getByRole('img', { name: 'fake' })).toHaveAttribute('src', 'fake-image.jpg')
+  })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  it('should create avatar with small size', async () => {
+    await render(
+      `<cebs-avatar photo="fake-image.jpg" name="fake" size="small"></cebs-avatar>`,
+      {
+        declarations: [AvatarComponent],
+      }
+    )
+
+    expect(getByLabelText('avatar')).toHaveClass('small')
+  })
+})

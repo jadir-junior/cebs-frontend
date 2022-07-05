@@ -3,7 +3,10 @@ import { Component, Input } from '@angular/core'
 @Component({
   selector: 'cebs-avatar',
   template: `
-    <div [ngClass]="{ 'small': size === 'small', 'medium': size === 'medium' }">
+    <div
+      aria-label="avatar"
+      [ngClass]="{ 'small': size === 'small', 'medium': size === 'medium' }"
+    >
       <img class="avatar" [src]="photo" [alt]="name" />
     </div>
   `,
