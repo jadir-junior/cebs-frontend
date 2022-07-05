@@ -12,6 +12,7 @@ const CHECKBOX_VALUE_ACCESSOR: Provider = {
   template: `
     <label for="checkbox" class="label" [ngClass]="{ 'label-disabled': disabled }">
       <input
+        #input
         id="checkbox"
         type="checkbox"
         role="checkbox"
@@ -19,7 +20,7 @@ const CHECKBOX_VALUE_ACCESSOR: Provider = {
         [attr.aria-checked]="checked"
         [checked]="checked"
         [disabled]="disabled"
-        (click)="onCheckChange($event)"
+        (click)="onCheckChange(input.checked)"
       />
       <span class="label-text" *ngIf="label">{{ label }}</span>
     </label>
@@ -34,15 +35,15 @@ export class CheckboxComponent implements ControlValueAccessor {
   disabled = false
   checked = false
 
-  onChange!: (checked: boolean) => {}
-  onTouched!: () => {}
+  onChange!: (checked: boolean) => VoidFunction
+  onTouched!: () => VoidFunction
 
-  onCheckChange(e: any): void {
+  onCheckChange(checked: boolean): void {
     if (this.disabled) {
       return
     }
 
-    this.checked = e.target.checked
+    this.checked = checked
     this.onChange(this.checked)
   }
 
@@ -54,11 +55,11 @@ export class CheckboxComponent implements ControlValueAccessor {
     this.checked = checked
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (value: boolean) => VoidFunction): void {
     this.onChange = fn
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => VoidFunction): void {
     this.onTouched = fn
   }
 

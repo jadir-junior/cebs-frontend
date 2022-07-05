@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, of, tap } from 'rxjs'
+import { BehaviorSubject, Observable, tap } from 'rxjs'
 
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
@@ -12,24 +12,20 @@ interface IUser {
   token: string
 }
 
-const response: IUser = {
-  id: '1',
-  name: 'Mick',
-  email: 'mickjjunior@gmail.com',
-  token: '1234asdfg',
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
+  private api = 'api/users/'
   private currentUserSubject: BehaviorSubject<IUser | null>
   public currentUser: Observable<IUser | null>
 
+  // localStorage.getItem('currentUser')
+  //   ? JSON.parse(localStorage.getItem('currentUser'))
+  //   : null
   constructor(private router: Router, private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<IUser | null>(
-      JSON.parse(localStorage.getItem('currentUser')!)
-    )
+    this.currentUserSubject = new BehaviorSubject<IUser | null>(null)
+
     this.currentUser = this.currentUserSubject.asObservable()
   }
 
@@ -41,29 +37,37 @@ export class AuthenticationService {
     return null
   }
 
-  login(email: string, password: string): Observable<unknown> {
-    return of({}).pipe(
-      tap(() => {
-        this.authenticatedUser()
-      })
-    )
+  login(email: string, password: string): void {
+    this.http
+      .post<IUser>(this.api, { email, password })
+      .pipe(
+        tap((user: IUser) => {
+          this.authenticatedUser(user)
+        })
+      )
+      .subscribe()
   }
 
-  register(name: string, email: string, password: string): Observable<unknown> {
-    return of({}).pipe(
-      tap(() => {
-        this.authenticatedUser()
-      })
-    )
+  register(name: string, email: string, password: string): void {
+    this.http
+      .post<IUser>(this.api, { name, email, password })
+      .pipe(
+        tap((user: IUser) => {
+          this.authenticatedUser(user)
+        })
+      )
+      .subscribe()
   }
 
-  forgotPassword(email: string): Observable<unknown> {
-    console.log('EMAIL: ', email)
-    return of({}).pipe(
-      tap(() => {
-        this.router.navigate(['/auth/check-your-email'])
-      })
-    )
+  forgotPassword(email: string): void {
+    this.http
+      .post<{ email: string }>(this.api, { email })
+      .pipe(
+        tap(() => {
+          this.router.navigate(['/auth/check-your-email'])
+        })
+      )
+      .subscribe()
   }
 
   getMe(): Observable<IUser> {
@@ -76,10 +80,10 @@ export class AuthenticationService {
     this.router.navigate(['/auth/login'])
   }
 
-  private authenticatedUser(): IUser {
-    localStorage.setItem('currentUser', JSON.stringify(response))
-    this.currentUserSubject.next(response)
+  private authenticatedUser(user: IUser): IUser {
+    localStorage.setItem('currentUser', JSON.stringify(user))
+    this.currentUserSubject.next(user)
     this.router.navigate(['/home'])
-    return response
+    return user
   }
 }

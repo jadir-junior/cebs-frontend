@@ -57,7 +57,7 @@ export class RegisterComponent {
     this.submitted = true
     if (valid) {
       const { name, email, password } = value
-      this.authenticationService.register(name, email, password).subscribe(() => {})
+      this.authenticationService.register(name, email, password)
     }
   }
 

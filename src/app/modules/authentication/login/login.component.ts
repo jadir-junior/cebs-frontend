@@ -46,7 +46,7 @@ export class LoginComponent {
   onSubmit({ value, valid }: FormGroup): void {
     this.submitted = true
     if (valid) {
-      this.authenticationService.login(value.email, value.password).subscribe(() => {})
+      this.authenticationService.login(value.email, value.password)
     }
   }
 

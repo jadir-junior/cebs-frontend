@@ -1,4 +1,11 @@
-import { Directive, ElementRef, Input, OnDestroy, ViewContainerRef } from '@angular/core'
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnDestroy,
+  ViewContainerRef,
+} from '@angular/core'
 import { Observable, Subscription, merge } from 'rxjs'
 import { Overlay, OverlayRef } from '@angular/cdk/overlay'
 
@@ -7,9 +14,6 @@ import { TemplatePortal } from '@angular/cdk/portal'
 
 @Directive({
   selector: '[dropdownTriggerFor]',
-  host: {
-    '(click)': 'toggleDropdown()',
-  },
 })
 export class DropdownTriggerForDirective implements OnDestroy {
   private isDropdownOpen = false
@@ -24,6 +28,7 @@ export class DropdownTriggerForDirective implements OnDestroy {
     private viewContainerRef: ViewContainerRef
   ) {}
 
+  @HostListener('click')
   toggleDropdown(): void {
     this.isDropdownOpen ? this.destroyDropdown() : this.openDropdown()
   }
