@@ -6,11 +6,14 @@ import { Component } from '@angular/core'
   styles: [
     `
       li {
+        margin: 8px 0;
         font-weight: 500;
         padding: 8px;
         cursor: pointer;
         color: var(--text-black);
         border-radius: 4px;
+        display: flex;
+        align-items: center;
 
         &:hover {
           color: var(--primary-color);

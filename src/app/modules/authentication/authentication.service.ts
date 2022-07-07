@@ -20,11 +20,10 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<IUser | null>
   public currentUser: Observable<IUser | null>
 
-  // localStorage.getItem('currentUser')
-  //   ? JSON.parse(localStorage.getItem('currentUser'))
-  //   : null
   constructor(private router: Router, private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<IUser | null>(null)
+    this.currentUserSubject = new BehaviorSubject<IUser | null>(
+      JSON.parse(localStorage.getItem('currentUser') || '{}')
+    )
 
     this.currentUser = this.currentUserSubject.asObservable()
   }

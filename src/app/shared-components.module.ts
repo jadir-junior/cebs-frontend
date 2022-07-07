@@ -13,10 +13,12 @@ import { HeaderBackButtonModule } from './components/internal/header-back-button
 import { IconButtonModule } from './components/external/icon-button/icon-button.module'
 import { InputModule } from './components/external/input/input.module'
 import { LinkModule } from './components/external/link/link.module'
+import { LogoCardModule } from './components/internal/logo-card/logo-card.module'
 import { LogoModule } from './components/internal/logo/logo.module'
 import { MascotModule } from './components/internal/mascot/mascot.module'
 import { MascotSharedModule } from './components/internal/mascot-shared/mascot-shared.module'
 import { MascotSuspectModule } from './components/internal/mascot-suspect/mascot-suspect.module'
+import { NavigationModule } from './components/external/navigation/navigation.module'
 import { NgModule } from '@angular/core'
 import { TextModule } from './components/external/text/text.module'
 import { TitleModule } from './components/external/title/title.module'
@@ -43,6 +45,8 @@ const modules = [
   CheckboxModule,
   BarsModule,
   DropdownModule,
+  NavigationModule,
+  LogoCardModule,
 ]
 
 @NgModule({

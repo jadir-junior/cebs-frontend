@@ -13,8 +13,6 @@ import { Component } from '@angular/core'
         display: flex;
         align-items: center;
         background-color: white;
-        position: fixed;
-        width: 100%;
       }
     `,
   ],

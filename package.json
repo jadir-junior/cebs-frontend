@@ -21,7 +21,9 @@
   "private": true,
   "lint-staged": {
     "src/**/*.{html,scss,ts}": [
-      "prettier --check",
+      "prettier --check"
+    ],
+    "src/**/*.{html,ts}": [
       "eslint --max-warnings=0"
     ]
   },

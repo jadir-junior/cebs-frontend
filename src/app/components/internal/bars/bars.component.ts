@@ -9,11 +9,13 @@ import { Component } from '@angular/core'
   styles: [
     `
       :host {
-        display: flex;
+        /* display: flex; */
+        /* justify-content: flex-end; */
       }
 
       .bars-space {
-        flex: 1;
+        margin-right: auto;
+        /* flex: 1; */
       }
     `,
   ],
