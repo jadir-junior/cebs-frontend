@@ -7,6 +7,5 @@ import { Component } from '@angular/core'
       <ng-content></ng-content>
     </ul>
   `,
-  styles: [],
 })
 export class ListComponent {}

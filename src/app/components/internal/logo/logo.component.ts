@@ -5,8 +5,8 @@ import { Component, Input } from '@angular/core'
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="123"
-      height="124"
+      [attr.width]="width"
+      [attr.height]="height"
       viewBox="0 0 123 124"
       fill="none"
     >
@@ -40,4 +40,6 @@ import { Component, Input } from '@angular/core'
 })
 export class LogoComponent {
   @Input() color: 'primary' | 'white' = 'primary'
+  @Input() width = '123px'
+  @Input() height = '124px'
 }
