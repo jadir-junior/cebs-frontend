@@ -8,14 +8,8 @@ import { Component } from '@angular/core'
   </cebs-app-bars>`,
   styles: [
     `
-      :host {
-        /* display: flex; */
-        /* justify-content: flex-end; */
-      }
-
       .bars-space {
         margin-right: auto;
-        /* flex: 1; */
       }
     `,
   ],
