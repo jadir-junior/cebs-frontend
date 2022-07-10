@@ -13,7 +13,7 @@
 }
 
 .wrapper-container {
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: var(--media-mobile)) {
     width: 100%;
     padding: 0;
   }
@@ -28,7 +28,7 @@
 }
 
 .wrapper-title {
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: var(--media-mobile)) {
     text-align: center;
   }
 
