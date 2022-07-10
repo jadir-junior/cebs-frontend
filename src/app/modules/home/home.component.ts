@@ -1,3 +1,5 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+
 import { Component } from '@angular/core'
 
 @Component({
@@ -10,8 +12,11 @@ import { Component } from '@angular/core'
           <cebs-bars></cebs-bars>
         </div>
         <div class="wrapper-main">
-          <div style="background-color: yellow; width: 100%; height: 600px;">
-            Something
+          <div style=" width: 100%; height: 600px;">
+            <form [formGroup]="form" (submit)="onSubmit(form)">
+              <cebs-select-pokemon formControlName="pokemon"></cebs-select-pokemon>
+              <button type="submit" role="submit">submit</button>
+            </form>
           </div>
           <div style="background-color: #eee; width: 100%; height: 800px;"></div>
           <div style="background-color: #eee; width: 100%; height: 700px;"></div>
@@ -42,4 +47,14 @@ import { Component } from '@angular/core'
     `,
   ],
 })
-export class HomeComponent {}
+export class HomeComponent {
+  form: FormGroup = this.fb.group({
+    pokemon: [[], [Validators.required]],
+  })
+
+  constructor(private fb: FormBuilder) {}
+
+  onSubmit({ value }: FormGroup): void {
+    console.log(value)
+  }
+}
