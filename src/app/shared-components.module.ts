@@ -18,7 +18,7 @@ import { LogoModule } from './components/internal/logo/logo.module'
 import { MascotModule } from './components/internal/mascot/mascot.module'
 import { MascotSharedModule } from './components/internal/mascot-shared/mascot-shared.module'
 import { MascotSuspectModule } from './components/internal/mascot-suspect/mascot-suspect.module'
-import { NavigationModule } from './components/external/navigation/navigation.module'
+import { NavigationModule } from './components/internal/navigation/navigation.module'
 import { NgModule } from '@angular/core'
 import { TextModule } from './components/external/text/text.module'
 import { TitleModule } from './components/external/title/title.module'
@@ -47,6 +47,7 @@ const modules = [
   DropdownModule,
   NavigationModule,
   LogoCardModule,
+  NavigationModule,
 ]
 
 @NgModule({
