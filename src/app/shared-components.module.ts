@@ -1,3 +1,4 @@
+import { BadgeModule } from './components/external/badge/badge.module'
 import { BarsModule } from './components/internal/bars/bars.module'
 import { ButtonModule } from './components/external/button/button.module'
 import { CheckboxModule } from './components/external/checkbox/checkbox.module'
@@ -48,6 +49,7 @@ const modules = [
   NavigationModule,
   LogoCardModule,
   NavigationModule,
+  BadgeModule,
 ]
 
 @NgModule({
