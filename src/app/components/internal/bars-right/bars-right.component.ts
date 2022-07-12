@@ -44,7 +44,7 @@ import { Component } from '@angular/core'
         display: flex;
 
         cebs-icon-button {
-          margin-right: 6px;
+          margin-left: 6px;
         }
       }
     `,

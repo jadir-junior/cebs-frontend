@@ -3,11 +3,11 @@ import { Component } from '@angular/core'
 @Component({
   selector: 'app-home',
   template: `
-    <div class="wrapper-home">
-      <cebs-navigation></cebs-navigation>
+    <div class="wrapper-home" resize (isMobileEvent)="onScreenChange($event)">
+      <cebs-navigation [isMobile]="isMobile"></cebs-navigation>
       <div class="wrapper-container">
         <div class="wrapper-header">
-          <cebs-bars></cebs-bars>
+          <cebs-bars [isMobile]="isMobile"></cebs-bars>
         </div>
         <div class="wrapper-main">
           <div style="background-color: yellow; width: 100%; height: 600px;">
@@ -22,11 +22,19 @@ import { Component } from '@angular/core'
   styles: [
     `
       .wrapper-home {
+        @media only screen and (max-width: 480px) {
+          display: block;
+        }
+
         display: flex;
         background-color: #eee;
       }
 
       .wrapper-container {
+        @media only screen and (max-width: 480px) {
+          margin-left: 0;
+        }
+
         width: 100%;
       }
 
@@ -42,4 +50,10 @@ import { Component } from '@angular/core'
     `,
   ],
 })
-export class HomeComponent {}
+export class HomeComponent {
+  isMobile = false
+
+  onScreenChange(value: boolean): void {
+    this.isMobile = value
+  }
+}

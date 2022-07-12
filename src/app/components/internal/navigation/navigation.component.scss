@@ -1,10 +1,18 @@
 .wrapper-navigation {
+  @media only screen and (max-width: 480px) {
+    left: -75px;
+    z-index: 2;
+    transition: width 300ms ease-in-out, left 300ms ease-in-out;
+    position: fixed;
+  }
+
   background-color: white;
   height: 100vh;
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 1;
+  bottom: 0;
+  z-index: 2;
   border-right: 2px solid #ddd;
   width: 75px;
   transition: width 100ms ease-in-out;
@@ -13,6 +21,26 @@
 
   &.open {
     width: 276px;
+
+    @media only screen and (max-width: 480px) {
+      left: 0;
+      display: flex;
+    }
+  }
+}
+
+.wrapper-overlay {
+  opacity: 0;
+  transition: opacity 400ms ease-in-out;
+
+  &.open {
+    background: rgba(0, 0, 0);
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
   }
 }
 
