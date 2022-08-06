@@ -14,7 +14,7 @@ import { Component } from '@angular/core'
         <div class="wrapper-main">
           <div style=" width: 100%; height: 600px;">
             <form [formGroup]="form" (submit)="onSubmit(form)">
-              <cebs-select-pokemon formControlName="pokemon"></cebs-select-pokemon>
+              <cebs-people-select formControlName="people"></cebs-people-select>
               <button type="submit" role="submit">submit</button>
             </form>
           </div>
@@ -49,7 +49,7 @@ import { Component } from '@angular/core'
 })
 export class HomeComponent {
   form: FormGroup = this.fb.group({
-    pokemon: [[], [Validators.required]],
+    people: ['', [Validators.required]],
   })
 
   constructor(private fb: FormBuilder) {}

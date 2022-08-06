@@ -1,0 +1,10 @@
+<ng-select
+  #ngSelect
+  [items]="items"
+  [bindLabel]="bindLabel"
+  [bindValue]="bindValue"
+  [hideSelected]="true"
+  [loading]="loading"
+  (scrollToEnd)="onScrollToEnd()"
+  (change)="onSelect($event)"
+></ng-select>
