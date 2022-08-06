@@ -20,7 +20,6 @@ import { MascotSharedModule } from './components/internal/mascot-shared/mascot-s
 import { MascotSuspectModule } from './components/internal/mascot-suspect/mascot-suspect.module'
 import { NavigationModule } from './components/external/navigation/navigation.module'
 import { NgModule } from '@angular/core'
-import { SelectModule } from './components/external/select/select.module'
 import { SelectPokemonModule } from './components/internal/select-pokemon/select-pokemon.module'
 import { TextModule } from './components/external/text/text.module'
 import { TitleModule } from './components/external/title/title.module'
@@ -49,7 +48,6 @@ const modules = [
   DropdownModule,
   NavigationModule,
   LogoCardModule,
-  SelectModule,
   SelectPokemonModule,
 ]
 
