@@ -1,3 +1,5 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+
 import { Component } from '@angular/core'
 
 @Component({
@@ -10,8 +12,11 @@ import { Component } from '@angular/core'
           <cebs-bars [isMobile]="isMobile"></cebs-bars>
         </div>
         <div class="wrapper-main">
-          <div style="background-color: yellow; width: 100%; height: 600px;">
-            Something
+          <div style=" width: 100%; height: 600px;">
+            <form [formGroup]="form" (submit)="onSubmit(form)">
+              <cebs-people-select formControlName="people"></cebs-people-select>
+              <button type="submit" role="submit">submit</button>
+            </form>
           </div>
           <div style="background-color: #eee; width: 100%; height: 800px;"></div>
           <div style="background-color: #eee; width: 100%; height: 700px;"></div>
@@ -53,7 +58,17 @@ import { Component } from '@angular/core'
 export class HomeComponent {
   isMobile = false
 
+  form: FormGroup = this.fb.group({
+    people: ['', [Validators.required]],
+  })
+
+  constructor(private fb: FormBuilder) {}
+
   onScreenChange(value: boolean): void {
     this.isMobile = value
+  }
+
+  onSubmit({ value }: FormGroup): void {
+    console.log(value)
   }
 }
