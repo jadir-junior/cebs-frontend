@@ -96,5 +96,9 @@ describe('BaseSelectFormTestingComponent', () => {
     expect(screen.getByLabelText('People Disabled')).toHaveClass('ng-select-disabled')
   })
 
-  // it('should initial a select with initial value', async () => {})
+  it('should initial a select with initial value', async () => {
+    await setup(getPeopleSuccesSpy)
+
+    expect(screen.getByText('R2-D2')).toBeInTheDocument()
+  })
 })
