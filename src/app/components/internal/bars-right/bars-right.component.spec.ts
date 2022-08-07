@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/angular'
 
 import { AvatarModule } from '../../external/avatar/avatar.module'
+import { BadgeModule } from '../../external/badge/badge.module'
 import { BarsRightComponent } from './bars-right.component'
 import { DropdownModule } from '../../external/dropdown/dropdown.module'
 import { DropdownUserAccountModule } from '../dropdown-user-account/dropdown-user-account.module'
@@ -15,6 +16,7 @@ const modules = [
   DropdownUserAccountModule,
   AvatarModule,
   WindowResizeModule,
+  BadgeModule,
 ]
 
 describe('BarsRightComponent', () => {

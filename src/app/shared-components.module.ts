@@ -1,3 +1,4 @@
+import { BadgeModule } from './components/external/badge/badge.module'
 import { BarsModule } from './components/internal/bars/bars.module'
 import { ButtonModule } from './components/external/button/button.module'
 import { CheckboxModule } from './components/external/checkbox/checkbox.module'
@@ -18,7 +19,7 @@ import { LogoModule } from './components/internal/logo/logo.module'
 import { MascotModule } from './components/internal/mascot/mascot.module'
 import { MascotSharedModule } from './components/internal/mascot-shared/mascot-shared.module'
 import { MascotSuspectModule } from './components/internal/mascot-suspect/mascot-suspect.module'
-import { NavigationModule } from './components/external/navigation/navigation.module'
+import { NavigationModule } from './components/internal/navigation/navigation.module'
 import { NgModule } from '@angular/core'
 import { PeopleSelectModule } from './components/internal/selects/people-select/people-select.module'
 import { TextModule } from './components/external/text/text.module'
@@ -49,6 +50,8 @@ const modules = [
   NavigationModule,
   LogoCardModule,
   PeopleSelectModule,
+  NavigationModule,
+  BadgeModule,
 ]
 
 @NgModule({

@@ -15,7 +15,10 @@ import { Component } from '@angular/core'
         icon="bar_chart"
         *ngIf="isMobile ? false : true"
       ></cebs-icon-button>
-      <cebs-icon-button icon="notifications"></cebs-icon-button>
+      <div class="wrapper-button-with-badge">
+        <cebs-icon-button icon="notifications"></cebs-icon-button>
+        <cebs-badge color="primary" [pill]="true">6</cebs-badge>
+      </div>
       <cebs-icon-button icon="chat" *ngIf="isMobile ? false : true"></cebs-icon-button>
       <cebs-icon-button
         icon="dashboard"
@@ -44,7 +47,18 @@ import { Component } from '@angular/core'
         display: flex;
 
         cebs-icon-button {
-          margin-right: 6px;
+          margin-left: 6px;
+        }
+      }
+
+      .wrapper-button-with-badge {
+        display: flex;
+        position: relative;
+
+        cebs-badge {
+          position: absolute;
+          right: 0;
+          top: -6px;
         }
       }
     `,

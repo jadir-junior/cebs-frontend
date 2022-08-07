@@ -13,6 +13,10 @@ import { IDropdownPanel } from './dropdown.model'
   `,
   styles: [
     `
+      :host {
+        transition: all 200ms ease-in-out;
+      }
+
       .wrapper-dropdown {
         background-color: white;
         min-width: 200px;
