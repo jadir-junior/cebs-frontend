@@ -1,3 +1,4 @@
+import { BaseSelectFormTestingModule } from 'src/app/components/internal/selects/base-select-form-testing/base-select-form-testing.module'
 import { CommonModule } from '@angular/common'
 import { HomeComponent } from './home.component'
 import { HomeRoutingModule } from './home-routing.module'
@@ -16,6 +17,7 @@ import { WindowResizeModule } from 'src/app/common/window-resize/window-resize.m
     ReactiveFormsModule,
     NgSelectModule,
     WindowResizeModule,
+    BaseSelectFormTestingModule,
   ],
 })
 export class HomeModule {}

@@ -18,6 +18,13 @@ describe('BaseSelectFormTestingComponent', () => {
     .fn()
     .mockReturnValue(throwError(() => ERROR_404_NOT_FOUND))
 
+  const formDefaultExpected = {
+    people: '',
+    peopleInitialValue: '3',
+    peopleMultiple: '',
+    peopleWithoutHideSelected: '',
+  }
+
   const setup = async (getPeople: jest.Mock) => {
     return render(BaseSelectFormTestingComponent, {
       imports: [BaseSelectModule, PeopleSelectModule, HttpClientTestingModule],
@@ -57,6 +64,46 @@ describe('BaseSelectFormTestingComponent', () => {
     expect(consoleErrorSpy).toHaveBeenCalledWith(ERROR_404_NOT_FOUND)
   })
 
+  it('should remove item when clicked if input "hideSelect" is true, its default is "true"', async () => {
+    await setup(getPeopleSuccesSpy)
+
+    const selects = screen.getAllByRole('combobox')
+
+    await userEvent.click(selects[0])
+
+    const options = screen.getAllByRole('option')
+
+    expect(options.length).toBe(10)
+
+    await userEvent.click(options[0])
+
+    await userEvent.click(selects[0])
+
+    const newOptions = screen.getAllByRole('option')
+
+    expect(newOptions.length).toBe(9)
+  })
+
+  it('should not remove item when clicked if input "hideSelect" is false', async () => {
+    await setup(getPeopleSuccesSpy)
+
+    const selects = screen.getAllByRole('combobox')
+
+    await userEvent.click(selects[4])
+
+    const options = screen.getAllByRole('option')
+
+    expect(options.length).toBe(10)
+
+    await userEvent.click(options[0])
+
+    await userEvent.click(selects[4])
+
+    const newOptions = screen.getAllByRole('option')
+
+    expect(newOptions.length).toBe(10)
+  })
+
   it('should select a first item in option "1"', async () => {
     await setup(getPeopleSuccesSpy)
 
@@ -70,7 +117,10 @@ describe('BaseSelectFormTestingComponent', () => {
 
     await userEvent.click(screen.getByRole('button', { name: 'submit' }))
 
-    expect(consoleLogSpy).toHaveBeenCalledWith({ people: '1', peopleInitialValue: '3' })
+    expect(consoleLogSpy).toHaveBeenCalledWith({
+      ...formDefaultExpected,
+      ...{ people: '1' },
+    })
   })
 
   it('should select a item in option and clear it', async () => {
@@ -87,7 +137,10 @@ describe('BaseSelectFormTestingComponent', () => {
     await userEvent.click(screen.getAllByTitle(/clear all/i)[0])
 
     await userEvent.click(screen.getByRole('button', { name: 'submit' }))
-    expect(consoleLogSpy).toHaveBeenCalledWith({ people: null, peopleInitialValue: '3' })
+    expect(consoleLogSpy).toHaveBeenCalledWith({
+      ...formDefaultExpected,
+      ...{ people: null },
+    })
   })
 
   it('should be a select disabled when the form is set to disabled the input', async () => {
@@ -96,9 +149,36 @@ describe('BaseSelectFormTestingComponent', () => {
     expect(screen.getByLabelText('People Disabled')).toHaveClass('ng-select-disabled')
   })
 
-  it('should initial a select with initial value', async () => {
+  it.skip('should initial a select with initial value', async () => {
     await setup(getPeopleSuccesSpy)
 
-    expect(screen.getByText('R2-D2')).toBeInTheDocument()
+    // jest.useFakeTimers()
+
+    expect(await screen.queryByText('R2-D2')).toBeInTheDocument()
+  })
+
+  it('should add multiple values', async () => {
+    await setup(getPeopleSuccesSpy)
+
+    const selects = screen.getAllByRole('combobox')
+
+    await userEvent.click(selects[3])
+
+    const options = screen.getAllByRole('option')
+
+    await userEvent.click(options[0])
+
+    await userEvent.click(selects[3])
+
+    const newOptions = screen.getAllByRole('option')
+
+    await userEvent.click(newOptions[0])
+
+    await userEvent.click(screen.getByRole('button', { name: 'submit' }))
+
+    expect(consoleLogSpy).toHaveBeenCalledWith({
+      ...formDefaultExpected,
+      ...{ peopleMultiple: ['1', '2'] },
+    })
   })
 })

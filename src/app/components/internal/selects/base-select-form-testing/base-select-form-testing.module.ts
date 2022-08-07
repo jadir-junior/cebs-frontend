@@ -6,5 +6,6 @@ import { PeopleSelectModule } from '../people-select/people-select.module'
 @NgModule({
   declarations: [BaseSelectFormTestingComponent],
   imports: [BaseSelectModule, PeopleSelectModule],
+  exports: [BaseSelectFormTestingComponent],
 })
 export class BaseSelectFormTestingModule {}

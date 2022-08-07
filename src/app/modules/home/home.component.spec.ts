@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { BaseSelectModule } from 'src/app/common/base-select/base-select.module'
+import { BaseSelectFormTestingModule } from 'src/app/components/internal/selects/base-select-form-testing/base-select-form-testing.module'
 import { HomeComponent } from './home.component'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { RouterTestingModule } from '@angular/router/testing'
@@ -17,7 +17,7 @@ describe('HomeComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule,
         SharedComponentsModule,
-        BaseSelectModule,
+        BaseSelectFormTestingModule,
       ],
     }).compileComponents()
   })
