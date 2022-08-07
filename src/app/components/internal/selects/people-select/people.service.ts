@@ -37,7 +37,7 @@ export interface IPeopleService {
 @Injectable({
   providedIn: 'root',
 })
-export class PeopleSelectService implements IPeopleService {
+export class PeopleService implements IPeopleService {
   STAR_WARS_API = 'https://swapi.dev/api'
 
   constructor(private http: HttpClient) {}

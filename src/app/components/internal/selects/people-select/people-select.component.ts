@@ -2,7 +2,7 @@ import { Component, Injector, OnInit, Provider, forwardRef } from '@angular/core
 
 import { BaseSelect, IBaseSelect } from 'src/app/common/base-select/base-select.component'
 import { NG_VALUE_ACCESSOR } from '@angular/forms'
-import { PeopleSelectService } from './people-select.service'
+import { PeopleService } from './people.service'
 
 export interface IPeopleSelect {
   label: string
@@ -18,7 +18,7 @@ const PEOPLE_SELECT_VALUE_ACCESSOR: Provider = {
 
 @Component({
   selector: 'cebs-people-select',
-  templateUrl: '../../../common/base-select/base-select.component.html',
+  templateUrl: '../../../../common/base-select/base-select.component.html',
   providers: [PEOPLE_SELECT_VALUE_ACCESSOR],
 })
 export class PeopleSelectComponent
@@ -26,7 +26,7 @@ export class PeopleSelectComponent
   implements IBaseSelect<IPeopleSelect>, OnInit
 {
   constructor(
-    private peopleService: PeopleSelectService,
+    private peopleService: PeopleService,
     protected override injector: Injector
   ) {
     super(injector)

@@ -1,15 +1,15 @@
-import { FormControl, NgControl } from '@angular/forms'
+import { FormControl, NgControl, Validators } from '@angular/forms'
 import { render, screen } from '@testing-library/angular'
 
 import { BaseSelectModule } from 'src/app/common/base-select/base-select.module'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { NO_ERRORS_SCHEMA } from '@angular/core'
 import { PeopleSelectComponent } from './people-select.component'
-import { PeopleSelectService } from './people-select.service'
+import { PeopleService } from './people.service'
 import { of } from 'rxjs'
 import userEvent from '@testing-library/user-event'
 
-const RESPONSE_PEOPLE = [
+export const RESPONSE_PEOPLE = [
   { 'label': 'Luke Skywalker', 'code': '1', 'description': 'Luke Skywalker' },
   { 'label': 'C-3PO', 'code': '2', 'description': 'C-3PO' },
   { 'label': 'R2-D2', 'code': '3', 'description': 'R2-D2' },
@@ -42,14 +42,24 @@ const RESPONSE_TWO_PEOPLE = [
 describe('PeopleSelectComponent', () => {
   const getPeopleSuccesSpy = jest.fn().mockReturnValue(of(RESPONSE_PEOPLE))
 
-  const setup = async (getPeople: jest.Mock) => {
+  const setup = async (getPeople: jest.Mock, disabled = false, value = '') => {
     return render(PeopleSelectComponent, {
-      componentProviders: [{ provide: NgControl, useValue: new FormControl() }],
+      componentProperties: {
+        ariaLabel: 'people',
+      },
+      componentProviders: [
+        {
+          provide: NgControl,
+          useValue: new FormControl({ value: value, disabled: disabled }, [
+            Validators.required,
+          ]),
+        },
+      ],
       imports: [HttpClientTestingModule, BaseSelectModule],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         {
-          provide: PeopleSelectService,
+          provide: PeopleService,
           useValue: {
             getPeople: getPeople,
           },

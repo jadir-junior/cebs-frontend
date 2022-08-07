@@ -1,13 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  AfterContentInit,
-  AfterViewInit,
-  Directive,
-  Injector,
-  Input,
-  ViewChild,
-} from '@angular/core'
+import { AfterContentInit, Directive, Injector, Input, ViewChild } from '@angular/core'
 import { ControlValueAccessor, NgControl } from '@angular/forms'
 
 import { NgSelectComponent } from '@ng-select/ng-select'
@@ -18,13 +11,13 @@ export interface IBaseSelect<T> {
 }
 
 @Directive()
-export class BaseSelect<T>
-  implements ControlValueAccessor, AfterContentInit, AfterViewInit
-{
+export class BaseSelect<T> implements ControlValueAccessor, AfterContentInit {
   @ViewChild('ngSelect', { static: true }) ngSelect!: NgSelectComponent
 
   @Input() bindLabel = 'label'
   @Input() bindValue = 'code'
+
+  @Input() ariaLabel?: string
 
   items!: T[]
   loading = false
@@ -44,19 +37,8 @@ export class BaseSelect<T>
     this.formControl = this.injector.get(NgControl)
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.setWriteValueInNgSelect()
-    })
-  }
-
-  setWriteValueInNgSelect() {
-    const value = this.formControl.control?.value
-    value ? this.ngSelect.writeValue(value) : this.ngSelect.writeValue('')
-  }
-
   writeValue(value: string | null): void {
-    this.value = value
+    this.ngSelect.writeValue(value)
   }
 
   registerOnChange(fn: (value: string | null) => void): void {

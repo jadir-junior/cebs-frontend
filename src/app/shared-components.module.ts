@@ -20,7 +20,7 @@ import { MascotSharedModule } from './components/internal/mascot-shared/mascot-s
 import { MascotSuspectModule } from './components/internal/mascot-suspect/mascot-suspect.module'
 import { NavigationModule } from './components/external/navigation/navigation.module'
 import { NgModule } from '@angular/core'
-import { PeopleSelectModule } from './components/internal/people-select/people-select.module'
+import { PeopleSelectModule } from './components/internal/selects/people-select/people-select.module'
 import { TextModule } from './components/external/text/text.module'
 import { TitleModule } from './components/external/title/title.module'
 

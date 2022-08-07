@@ -5,6 +5,8 @@
   [bindValue]="bindValue"
   [hideSelected]="true"
   [loading]="loading"
+  [readonly]="disabled"
+  [attr.aria-label]="ariaLabel"
   (scrollToEnd)="onScrollToEnd()"
   (change)="onSelect($event)"
 ></ng-select>
